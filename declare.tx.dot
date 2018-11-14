@@ -1,0 +1,130 @@
+
+    digraph xtext {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2533881404088 -> 2533881429576[arrowtail=diamond, dir=both, headlabel="rule 0..*"]
+2533881404088[ label="{Rule_pseudocode|}"]
+
+2533881429576[ label="{*Rule|}"]
+2533881429576 -> 2533881435240 [dir=back]
+2533881429576 -> 2533881434296 [dir=back]
+2533881429576 -> 2533881458840 [dir=back]
+2533881429576 -> 2533881358776 [dir=back]
+
+2533881435240[ label="{*Declare|}"]
+2533881435240 -> 2533881437128 [dir=back]
+2533881435240 -> 2533881444680 [dir=back]
+2533881435240 -> 2533881439960 [dir=back]
+
+2533881437128 -> 2533881443736[arrowtail=diamond, dir=both, headlabel="variable "]
+2533881437128[ label="{Declare_variable|}"]
+
+2533881444680 -> 2533881443736[arrowtail=diamond, dir=both, headlabel="variable "]
+2533881444680[ label="{Input_variable|}"]
+
+2533881439960 -> 2533881443736[arrowtail=diamond, dir=both, headlabel="variable "]
+2533881439960 -> 2533881447512[arrowtail=diamond, dir=both, headlabel="value "]
+2533881439960[ label="{Declare_value|}"]
+
+2533881443736[ label="{Variable|+var:ID\l}"]
+
+2533881447512[ label="{Value|+val:OBJECT\l}"]
+
+2533881434296[ label="{*Print|}"]
+2533881434296 -> 2533881445624 [dir=back]
+2533881434296 -> 2533881449400 [dir=back]
+
+2533881445624 -> 2533881457896[arrowtail=diamond, dir=both, headlabel="content_string "]
+2533881445624[ label="{Print_string|}"]
+
+2533881449400 -> 2533881456008[arrowtail=diamond, dir=both, headlabel="content "]
+2533881449400[ label="{Print_words|}"]
+
+2533881457896[ label="{Content_string|+con:STRING\l}"]
+
+2533881456008[ label="{Content|+con:ID\l}"]
+
+2533881458840[ label="{*Operator|}"]
+2533881458840 -> 2533881452232 [dir=back]
+2533881458840 -> 2533881354056 [dir=back]
+2533881458840 -> 2533881339896 [dir=back]
+
+2533881452232[ label="{*Comparision|}"]
+2533881452232 -> 2533881333288 [dir=back]
+2533881452232 -> 2533881341784 [dir=back]
+2533881452232 -> 2533881361608 [dir=back]
+2533881452232 -> 2533881356888 [dir=back]
+2533881452232 -> 2533881360664 [dir=back]
+
+2533881333288 -> 2533881334232[arrowtail=diamond, dir=both, headlabel="variable_before "]
+2533881333288 -> 2533881336120[arrowtail=diamond, dir=both, headlabel="variable_after "]
+2533881333288[ label="{Greater_than|}"]
+
+2533881341784 -> 2533881334232[arrowtail=diamond, dir=both, headlabel="variable_before "]
+2533881341784 -> 2533881336120[arrowtail=diamond, dir=both, headlabel="variable_after "]
+2533881341784[ label="{Lower_than|}"]
+
+2533881361608 -> 2533881334232[arrowtail=diamond, dir=both, headlabel="variable_before "]
+2533881361608 -> 2533881336120[arrowtail=diamond, dir=both, headlabel="variable_after "]
+2533881361608[ label="{More_equal|}"]
+
+2533881356888 -> 2533881334232[arrowtail=diamond, dir=both, headlabel="variable_before "]
+2533881356888 -> 2533881336120[arrowtail=diamond, dir=both, headlabel="variable_after "]
+2533881356888[ label="{Is_equal_to|}"]
+
+2533881360664 -> 2533881334232[arrowtail=diamond, dir=both, headlabel="variable_before "]
+2533881360664 -> 2533881336120[arrowtail=diamond, dir=both, headlabel="variable_after "]
+2533881360664[ label="{Is_different_from|}"]
+
+2533881334232[ label="{Variable_before|+var:ID\l}"]
+
+2533881336120[ label="{Variable_after|+var:ID\l}"]
+
+2533881358776 -> 2533881452232[arrowtail=diamond, dir=both, headlabel="comparision "]
+2533881358776 -> 2533881351224[arrowtail=diamond, dir=both, headlabel="execute "]
+2533881358776[ label="{If|}"]
+
+2533881351224[ label="{*Execute|}"]
+2533881351224 -> 2533881435240 [dir=back]
+2533881351224 -> 2533881434296 [dir=back]
+
+2533881354056[ label="{Calculation|+cal:ID\l}"]
+
+2533881339896[ label="{Logical_operation|+log:ID\l}"]
+
+2533881338008[ label="{Comment|\\/\\/.*$}"]
+
+2533881401256[ label="{ID|}"]
+
+2533881411640[ label="{STRING|}"]
+
+2533881423912[ label="{BOOL|}"]
+
+2533881424856[ label="{INT|}"]
+
+2533881431464[ label="{FLOAT|}"]
+
+2533881427688[ label="{NUMBER|}"]
+2533881427688 -> 2533881431464 [dir=back]
+2533881427688 -> 2533881424856 [dir=back]
+
+2533881430520[ label="{BASETYPE|}"]
+2533881430520 -> 2533881427688 [dir=back]
+2533881430520 -> 2533881423912 [dir=back]
+2533881430520 -> 2533881401256 [dir=back]
+2533881430520 -> 2533881411640 [dir=back]
+
+2533881402200[ label="{*OBJECT|}"]
+2533881402200 -> 2533881430520 [dir=back]
+
+
+}

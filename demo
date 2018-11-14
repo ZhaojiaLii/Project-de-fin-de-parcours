@@ -1,0 +1,22 @@
+declare a
+declare b
+declare t
+declare p
+declare c
+
+print c
+
+input c
+input d
+input l
+
+a equal 1
+p equal li
+
+print lizhaojia
+print a
+print 'today is a' 
+
+if a is greater than b then
+    print a
+end if

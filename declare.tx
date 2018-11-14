@@ -1,0 +1,130 @@
+Rule_pseudocode:
+    rule *= Rule    
+;
+
+Rule:
+    Declare | Print | Operator | If
+;
+
+
+
+
+
+Declare:
+    Declare_variable | Input_variable | Declare_value
+;
+
+Declare_variable:
+    'declare' /\s*/ variable = Variable /\n*/
+;
+
+Input_variable:
+    'input' /\s*/ variable = Variable /\n*/
+;
+
+Declare_value:
+    variable = Variable /\s*/ 'equal' /\s*/ value = Value /\n*/
+;
+
+Variable:
+    var = ID
+;
+
+Value:
+    val = ID | val = INT
+;
+
+
+
+
+
+Print:
+    Print_string | Print_words
+;
+
+Print_string:
+    'print' /\s*/ content_string = Content_string 
+;
+
+Print_words:
+    'print' /\s*/ content = Content
+;
+
+Content_string:
+    con = STRING /\s*/
+;
+
+Content:
+    con = ID /\s*/
+;
+
+
+
+
+
+
+Operator:
+    Comparision | Calculation | Logical_operation
+;
+
+Comparision:
+    Greater_than | Lower_than | More_equal | Is_equal_to | Is_different_from 
+;
+
+
+
+Greater_than:
+    variable_before = Variable_before ' is greater than ' variable_after = Variable_after 
+;
+
+Lower_than:
+   variable_before = Variable_before ' is lower than ' variable_after = Variable_after 
+;
+
+More_equal:
+    variable_before = Variable_before ' is more equal ' variable_after = Variable_after 
+;
+
+Is_equal_to:
+    variable_before = Variable_before ' is equal to ' variable_after = Variable_after 
+;
+
+Is_different_from:
+    variable_before = Variable_before ' is different from ' variable_after = Variable_after 
+;
+
+Variable_before:
+    var = ID
+;
+Variable_after:
+    var = ID
+;
+
+
+If:
+    'if ' comparision = Comparision 'then' /\s*\n/ '    ' execute = Execute /\s*\n/ 'end if'  
+;
+
+Execute:
+    Declare | Print
+;
+
+
+
+
+Calculation:
+    cal =ID
+;
+
+Logical_operation:
+    log=ID
+;
+
+
+
+
+Comment:
+  /\/\/.*$/
+;
+
+
