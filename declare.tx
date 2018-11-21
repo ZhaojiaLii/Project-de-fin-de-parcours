@@ -3,10 +3,8 @@ Rule_pseudocode:
 ;
 
 Rule:
-    Declare | Print | Operator | If
+    Declare | Print | Operator 
 ;
-
-
 
 
 
@@ -74,7 +72,7 @@ Comparision:
 
 
 Greater_than:
-    variable_before = Variable_before ' is greater than ' variable_after = Variable_after 
+    variable_before = Variable_before /\s*/ 'is greater than' /\s*/ variable_after = Variable_after 
 ;
 
 Lower_than:
@@ -99,17 +97,6 @@ Variable_before:
 Variable_after:
     var = ID
 ;
-
-
-If:
-    'if ' comparision = Comparision 'then' /\s*\n/ '    ' execute = Execute /\s*\n/ 'end if'  
-;
-
-Execute:
-    Declare | Print
-;
-
-
 
 
 Calculation:

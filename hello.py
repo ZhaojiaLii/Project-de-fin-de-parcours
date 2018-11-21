@@ -7,25 +7,15 @@ example_python_model = python_meta.model_from_file('demo')
 
 class Python(object):
 
-
-    def if_function(self, model):
-        for c in model.rule:
-            if c.__class__.__name__ == 'If':
-                com = '{}'.format(c.comparision)
-                if com.index('is greater than'):
-                    print(com)
-                else:
-                    print('shibaile!')
-
     def declare_and_print(self, model):
 
-        show_declare = '//you have not give values to these variables: '
-        show_input = '//you need to type in variable: '
+        show_declare = '\n'+'//you have not give values to these variables: '
+        show_input = '\n'+'//you need to type in variable: '
         declare_list = []
         input_list = []
         need_value_list = []
 
-        for c in model.rule:       
+        for c in model.rule:             
             if c.__class__.__name__ == 'Declare_variable':                
                 var_declare = '{}'.format(c.variable.var)
                 declare_list.append(var_declare)
@@ -33,7 +23,7 @@ class Python(object):
             elif c.__class__.__name__ == 'Input_variable':
                 var_input = '{}'.format(c.variable.var)
                 if var_input not in declare_list:
-                    print ("//please declare the variable '"+var_input+"' first")
+                    print ('\n'+"//please declare the variable '"+var_input+"' first")
                 else:
                     show_input = show_input + var_input
                     input_list.append(var_input)
@@ -55,12 +45,13 @@ class Python(object):
                 if content in declare_list and input_list:
                     print ('print '+ content)
                 elif content in declare_list not in input_list:
-                    print ('//'+content+' is a variable, please give a value before print.')
+                    print ('\n'+'//'+content+' is a variable, please give a value before print.')
                 else:
                     print ('print "'+ content +'"')
             elif c.__class__.__name__ == 'Print_string':
                 content = '{}'.format(c.content_string.con)
                 print ('print '+'"'+content+'"')
+            
 
         if len(need_value_list)>0:
             for vals in need_value_list[:-1]:
@@ -79,15 +70,12 @@ pyth = Python()
 pyth.declare_and_print(example_python_model)
 
 
-
-# Calculation:
-#     Equal | Plus | Minus | Multiply | Power | Divide 
-# ;
-
-# Equal:
-#     variable1 = ID 'equal' variable2 =ID
-# ;
-
-# Logical_operation:
-#     And | Or | Not 
-# ;
+# def if_function(self, model):
+#         print('//if function as below:')
+#         for c in model.rule:
+#             if c.__class__.__name__ == 'Start_line':
+#                 before = '{}'.format(c.greater_than.variable_before.var)
+#                 after = '{}'.format(c.greater_than.variable_after.var)
+#                 print(before + 'and' + after)
+#             else:
+#                 return

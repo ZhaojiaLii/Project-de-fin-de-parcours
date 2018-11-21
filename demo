@@ -1,6 +1,4 @@
 declare a
-declare b
-declare t
 declare p
 declare c
 
@@ -16,7 +14,3 @@ p equal li
 print lizhaojia
 print a
 print 'today is a' 
-
-if a is greater than b then
-    print a
-end if
