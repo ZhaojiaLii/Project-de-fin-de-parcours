@@ -1,0 +1,106 @@
+Rule_pseudocode:
+    instruction *= Instruction    
+;
+
+Instruction:
+    Basic_instructions | If_instruction 
+;
+
+Basic_instructions:
+    Declare | Print | Operator
+;
+
+If_instruction:
+    If_instruction_startline | If_instruction_elifline | If_instruction_elseline | If_instruction_endline
+;
+
+If_instruction_startline:
+    'if' variable_be = Variable_be comparasion = Comparasion variable_af = Variable_af 'then'
+;
+
+If_instruction_elifline:
+    'else if' variable_be = Variable_be comparasion = Comparasion variable_af = Variable_af 'then'
+; 
+
+If_instruction_elseline:
+    'else' /\s*/ 
+;
+
+If_instruction_endline:
+    'end if' /\n*/
+;
+
+
+Declare:
+    Declare_variable | Input_variable | Declare_value
+;
+
+Declare_variable:
+    'declare' /\s*/ variable = Variable /\n*/
+;
+
+Input_variable:
+    'input' /\s*/ variable = Variable /\n*/
+;
+
+Declare_value:
+    variable = Variable /\s*/ 'equal' /\s*/ value = Value /\n*/
+;
+
+Variable:
+    var = ID
+;
+
+Value:
+    val = ID | val = INT
+;
+
+
+
+
+
+Print:
+    Print_string | Print_words
+;
+
+Print_string:
+    'print' /\s*/ content_string = Content_string 
+;
+
+Print_words:
+    'print' /\s*/ content = Content
+;
+
+Content_string:
+    con = STRING /\s*/
+;
+
+Content:
+    con = ID /\s*/
+;
+
+
+
+Operator:
+    Comparasion 
+;
+
+Comparasion:
+    'is greater than' | 'is lower than' | 'is more equal' | 'is equal to' | 'is different from' 
+;
+
+
+Variable_be:
+    var_be = ID
+;
+Variable_af:
+    var_af = ID
+;
+
+
+
+Comment:
+  /\/\/.*$/
+;
+
+

@@ -1,6 +1,7 @@
 declare a
 declare p
 declare c
+declare ddd
 
 print c
 
@@ -11,6 +12,20 @@ input l
 a equal 1
 p equal li
 
+
 print lizhaojia
 print a
 print 'today is a' 
+
+if a is different from p then
+    print a
+else if a is greater than p then
+    input ddd
+    print ddd
+else
+    print c
+end if
+
+declare asdf
+input asdf
+
