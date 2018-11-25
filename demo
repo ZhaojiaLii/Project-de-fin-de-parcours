@@ -2,6 +2,7 @@ declare a
 declare p
 declare c
 declare ddd
+declare q
 
 print c
 
@@ -11,6 +12,7 @@ input l
 
 a equal 1
 p equal li
+q equal 2
 
 
 print lizhaojia
@@ -24,8 +26,28 @@ else if a is greater than p then
     print ddd
 else
     print c
-end if
+    end if
 
 declare asdf
-input asdf
 
+
+if a is more equal p then
+    if a is equal to p then
+        if a is equal to p then
+            input asdf
+        else if a is lower than q then
+            print p
+        else
+            print q
+        end if
+    else if a is lower than q then
+        print p
+    else
+        print q
+    end if
+else if a is equal to p then
+    print a
+else
+    print a
+end if
+    
