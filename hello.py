@@ -220,7 +220,7 @@ class Python(object):
                     indentation = ''
                 print (indentation + "else:")
             elif c == 'end if':
-                print (if_num_1)
+                print ("//number " + str(if_num_1) + " if instruction finished")
                 if_num_1 = if_num_1 - 1
                 
 
