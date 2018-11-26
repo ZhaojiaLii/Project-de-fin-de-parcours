@@ -14,7 +14,6 @@ a equal 1
 p equal li
 q equal 2
 
-
 print lizhaojia
 print a
 print 'today is a' 
@@ -30,12 +29,11 @@ else
 
 declare asdf
 
-
 if a is more equal p then
     if a is equal to p then
         if a is equal to p then
             input asdf
-        else if a is lower than q then
+        else if a and q then
             print p
         else
             print q
@@ -50,4 +48,5 @@ else if a is equal to p then
 else
     print a
 end if
-    
+   
+a plus b
