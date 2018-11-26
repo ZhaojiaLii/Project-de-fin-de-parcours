@@ -11,98 +11,110 @@
     edge[dir=black,arrowtail=empty]
 
 
-2259501633128 -> 2259501645400[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
-2259501633128[ label="{Rule_pseudocode|}"]
+2157937671416 -> 2157937661032[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
+2157937671416[ label="{Rule_pseudocode|}"]
 
-2259501645400[ label="{*Instruction|}"]
-2259501645400 -> 2259501651064 [dir=back]
-2259501645400 -> 2259501652952 [dir=back]
+2157937661032[ label="{*Instruction|}"]
+2157937661032 -> 2157937668584 [dir=back]
+2157937661032 -> 2157937683688 [dir=back]
 
-2259501651064[ label="{*Basic_instructions|}"]
-2259501651064 -> 2259501553832 [dir=back]
-2259501651064 -> 2259501564216 [dir=back]
+2157937668584[ label="{*Basic_instructions|}"]
+2157937668584 -> 2157937685576 [dir=back]
+2157937668584 -> 2157937712008 [dir=back]
+2157937668584 -> 2157937704456 [dir=back]
 
-2259501652952[ label="{*If_instruction|}"]
-2259501652952 -> 2259501654840 [dir=back]
-2259501652952 -> 2259501656728 [dir=back]
+2157937689352[ label="{*Calculation|}"]
+2157937689352 -> 2157937704456 [dir=back]
 
-2259501654840 -> 2259501568936[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2259501654840 -> 2259501571768[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2259501654840[ label="{If_instruction_startline|+comparasion:Comparasion\l}"]
+2157937683688[ label="{*If_instruction|}"]
+2157937683688 -> 2157937692184 [dir=back]
+2157937683688 -> 2157937709176 [dir=back]
 
-2259501656728 -> 2259501568936[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2259501656728 -> 2259501571768[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2259501656728[ label="{If_instruction_elifline|+comparasion:Comparasion\l}"]
+2157937692184 -> 2157937718616[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2157937692184 -> 2157937728056[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2157937692184[ label="{If_instruction_startline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2259501555720[ label="{If_instruction_elseline|else \\s*}"]
+2157937709176 -> 2157937718616[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2157937709176 -> 2157937728056[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2157937709176[ label="{If_instruction_elifline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2259501546280[ label="{If_instruction_endline|end if \\n*}"]
+2157937699736[ label="{If_instruction_elseline|else \\s*}"]
 
-2259501553832[ label="{*Declare|}"]
-2259501553832 -> 2259501538728 [dir=back]
-2259501553832 -> 2259501562328 [dir=back]
-2259501553832 -> 2259501534008 [dir=back]
+2157937698792[ label="{If_instruction_endline|end if \\n*}"]
 
-2259501538728 -> 2259501545336[arrowtail=diamond, dir=both, headlabel="variable "]
-2259501538728[ label="{Declare_variable|}"]
+2157937685576[ label="{*Declare|}"]
+2157937685576 -> 2157937696904 [dir=back]
+2157937685576 -> 2157937700680 [dir=back]
+2157937685576 -> 2157937710120 [dir=back]
 
-2259501562328 -> 2259501545336[arrowtail=diamond, dir=both, headlabel="variable "]
-2259501562328[ label="{Input_variable|}"]
+2157937696904 -> 2157937687464[arrowtail=diamond, dir=both, headlabel="variable "]
+2157937696904[ label="{Declare_variable|}"]
 
-2259501534008 -> 2259501545336[arrowtail=diamond, dir=both, headlabel="variable "]
-2259501534008 -> 2259501540616[arrowtail=diamond, dir=both, headlabel="value "]
-2259501534008[ label="{Declare_value|}"]
+2157937700680 -> 2157937687464[arrowtail=diamond, dir=both, headlabel="variable "]
+2157937700680[ label="{Input_variable|}"]
 
-2259501545336[ label="{Variable|+var:ID\l}"]
+2157937710120 -> 2157937687464[arrowtail=diamond, dir=both, headlabel="variable "]
+2157937710120 -> 2157937703512[arrowtail=diamond, dir=both, headlabel="value "]
+2157937710120[ label="{Declare_value|}"]
 
-2259501540616[ label="{Value|+val:OBJECT\l}"]
+2157937687464[ label="{Variable|+var:ID\l}"]
 
-2259501564216[ label="{*Print|}"]
-2259501564216 -> 2259501551944 [dir=back]
-2259501564216 -> 2259501554776 [dir=back]
+2157937703512[ label="{Value|+val:OBJECT\l}"]
 
-2259501551944 -> 2259501558552[arrowtail=diamond, dir=both, headlabel="content_string "]
-2259501551944[ label="{Print_string|}"]
+2157937712008[ label="{*Print|}"]
+2157937712008 -> 2157937714840 [dir=back]
+2157937712008 -> 2157937713896 [dir=back]
 
-2259501554776 -> 2259501534952[arrowtail=diamond, dir=both, headlabel="content "]
-2259501554776[ label="{Print_words|}"]
+2157937714840 -> 2157937729000[arrowtail=diamond, dir=both, headlabel="content_string "]
+2157937714840[ label="{Print_string|}"]
 
-2259501558552[ label="{Content_string|+con:STRING\l}"]
+2157937713896 -> 2157937715784[arrowtail=diamond, dir=both, headlabel="content "]
+2157937713896[ label="{Print_words|}"]
 
-2259501534952[ label="{Content|+con:ID\l}"]
+2157937729000[ label="{Content_string|+con:STRING\l}"]
 
-2259501567048[ label="{Operator|is greater than\|is lower than\|is more equal\|is equal to\|is different from}"]
+2157937715784[ label="{Content|+con:ID\l}"]
 
-2259501572712[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is equal to\|is different from}"]
+2157937704456 -> 2157937718616[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2157937704456 -> 2157937728056[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2157937704456[ label="{Calculation_simple|+calculation_operator:Calculation_operator\l}"]
 
-2259501568936[ label="{Variable_be|+var_be:ID\l}"]
+2157937686520[ label="{Operators|}"]
 
-2259501571768[ label="{Variable_af|+var_af:ID\l}"]
+2157937697848[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is less euqal\|is equal to\|is different from}"]
 
-2259501573656[ label="{Comment|\\/\\/.*$}"]
+2157937712952[ label="{Calculation_operator|plus\|minus\|multiply\|divide\|power}"]
 
-2259501650120[ label="{ID|}"]
+2157937727112[ label="{Logic_operator|and\|or\|not}"]
 
-2259501652008[ label="{STRING|}"]
+2157937718616[ label="{Variable_be|+var_be:ID\l}"]
 
-2259501634072[ label="{BOOL|}"]
+2157937728056[ label="{Variable_af|+var_af:ID\l}"]
 
-2259501627464[ label="{INT|}"]
+2157937722392[ label="{Comment|\\/\\/.*$}"]
 
-2259501629352[ label="{FLOAT|}"]
+2157937657256[ label="{ID|}"]
 
-2259501640680[ label="{NUMBER|}"]
-2259501640680 -> 2259501629352 [dir=back]
-2259501640680 -> 2259501627464 [dir=back]
+2157937669528[ label="{STRING|}"]
 
-2259501635960[ label="{BASETYPE|}"]
-2259501635960 -> 2259501640680 [dir=back]
-2259501635960 -> 2259501634072 [dir=back]
-2259501635960 -> 2259501650120 [dir=back]
-2259501635960 -> 2259501652008 [dir=back]
+2157937660088[ label="{BOOL|}"]
 
-2259501635016[ label="{*OBJECT|}"]
-2259501635016 -> 2259501635960 [dir=back]
+2157937674248[ label="{INT|}"]
+
+2157937675192[ label="{FLOAT|}"]
+
+2157937664808[ label="{NUMBER|}"]
+2157937664808 -> 2157937675192 [dir=back]
+2157937664808 -> 2157937674248 [dir=back]
+
+2157937670472[ label="{BASETYPE|}"]
+2157937670472 -> 2157937664808 [dir=back]
+2157937670472 -> 2157937660088 [dir=back]
+2157937670472 -> 2157937657256 [dir=back]
+2157937670472 -> 2157937669528 [dir=back]
+
+2157937667640[ label="{*OBJECT|}"]
+2157937667640 -> 2157937670472 [dir=back]
 
 
 }
