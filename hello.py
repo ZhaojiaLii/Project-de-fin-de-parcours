@@ -1,16 +1,20 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+# prepare for the parsing
 from textx.metamodel import metamodel_from_file
 python_meta = metamodel_from_file('Pseudocode_textX.tx')
 example_python_model = python_meta.model_from_file('demo')
 
+# the class for parse all our pseudocode to python code
 class Python(object):
 
+    # for testing the output of our model
     def _test_(self, model):
         for c in model.instruction:
             print (c)
 
+    # we parse our code in this function
     def Instructions(self, model):
 
         show_declare = '\n'+'//you have not give values to these variables: '
@@ -23,13 +27,14 @@ class Python(object):
         indentation = "    "    # control the indentation of python code
 
         
-
+        # where we get the instructions from the model and process them
         for c in model.instruction:   
             #print (c)
                 
             # Basic instructions as below:
             # we have declare_variables, input_variables and print
 
+            # for process the indentations
             if if_num_1 == 0:
                 indentation = ''
             elif if_num_1 == 1:
@@ -40,11 +45,12 @@ class Python(object):
                 for i in range(if_num_1-2):
                     indentation = indentation + "    "
 
+            # we start to process the pseudocode from here:
             if c.__class__.__name__ == 'Declare_variable':                
                 var_declare = '{}'.format(c.variable.var)
                 declare_list.append(var_declare)
                 need_value_list.append(var_declare)
-                print ("//you have declared " + var_declare)
+                print ("//you have declared variable " + var_declare)
                 
             elif c.__class__.__name__ == 'Input_variable':
                 var_input = '{}'.format(c.variable.var)
@@ -100,7 +106,20 @@ class Python(object):
                     print (indentation + 'print '+'"'+content+'"')
                 else:
                     print ('print '+'"'+content+'"')
-                
+            
+            elif c.__class__.__name__ == 'Calculation_simple':
+
+                variable_af = '{}'.format(c.variable_af.var_af)
+                if c.calculation_operator == 'plus':
+                    print (variable_be + '+' + variable_af)
+                elif c.calculation_operator == 'minus':
+                    print (variable_be + '-' + variable_af)
+                elif c.calculation_operator == 'multiply':
+                    print (variable_be + '*' + variable_af)
+                elif c.calculation_operator == 'divide':
+                    print (variable_be + '/' + variable_af)
+                elif c.calculation_operator == 'power':
+                    print (variable_be + '**' + variable_af)
 
             
             # If instruction is as below:
@@ -118,6 +137,7 @@ class Python(object):
                 variable_be = '{}'.format(c.variable_be.var_be)
                 variable_af = '{}'.format(c.variable_af.var_af)
                 comparasion_symbol = '{}'.format(c.comparasion)
+                logic_operator = '{}'.format(c.logic_operator)
 
                 if if_num_1 > 1:
                     if if_num_1 == 2:
@@ -145,26 +165,34 @@ class Python(object):
                     print ("//" + variable_af + " is not a declared variable, please declare first.")
                 
                 if a == 2:
+
+                    # comparasion in if instruction
                     if comparasion_symbol == 'is greater than':
-                        print (indentation + "if " + variable_be + " > " + variable_af + ":")
-                        
+                        print (indentation + "if " + variable_be + " > " + variable_af + ":")                 
                     elif comparasion_symbol == 'is lower than':
-                        print (indentation + "if " + variable_be + " < " + variable_af + ":")
-                        
+                        print (indentation + "if " + variable_be + " < " + variable_af + ":")                      
                     elif comparasion_symbol == 'is more equal':
-                        print (indentation + "if " + variable_be + " >= " + variable_af + ":")
-                        
+                        print (indentation + "if " + variable_be + " >= " + variable_af + ":")                     
                     elif comparasion_symbol == 'is equal to':
-                        print (indentation + "if " + variable_be + " == " + variable_af + ":")
-                        
+                        print (indentation + "if " + variable_be + " == " + variable_af + ":")                
                     elif comparasion_symbol == 'is different from':
                         print (indentation + "if " + variable_be + " != " + variable_af + ":")
+
+                    # logic operator in if instruction
+                    elif logic_operator == 'and':
+                        print (indentation + "if " + variable_be + " and " + variable_af + ":")
+                    elif logic_operator == 'or':
+                        print (indentation + "if " + variable_be + " or " + variable_af + ":")
+                    elif logic_operator == 'not':
+                        print (indentation + "if " + variable_be + " not " + variable_af + ":")
             
             elif c.__class__.__name__ == 'If_instruction_elifline':
+
                 a = 0   # use a variable to know the two variables in IF are all declared
                 variable_be = '{}'.format(c.variable_be.var_be)
                 variable_af = '{}'.format(c.variable_af.var_af)
                 comparasion_symbol = '{}'.format(c.comparasion)
+                logic_operator = '{}'.format(c.logic_operator)
 
                 indentation = "    "
                 if if_num_1 > 1:
@@ -192,21 +220,27 @@ class Python(object):
                     print ("//" + variable_af + " is not a declared variable, please declare first.")
                 
                 if a == 2:
+
+                    # comparasion in if instruction
                     if comparasion_symbol == 'is greater than':
-                        print (indentation + "elif " + variable_be + " > " + variable_af + ":")
-                        
+                        print (indentation + "elif " + variable_be + " > " + variable_af + ":")                      
                     elif comparasion_symbol == 'is lower than':
-                        print (indentation + "elif " + variable_be + " < " + variable_af + ":")
-                        
+                        print (indentation + "elif " + variable_be + " < " + variable_af + ":")                    
                     elif comparasion_symbol == 'is more equal':
-                        print (indentation + "elif " + variable_be + " >= " + variable_af + ":")
-                        
+                        print (indentation + "elif " + variable_be + " >= " + variable_af + ":")                      
                     elif comparasion_symbol == 'is equal to':
-                        print (indentation + "elif " + variable_be + " == " + variable_af + ":")
-                        
+                        print (indentation + "elif " + variable_be + " == " + variable_af + ":")                       
                     elif comparasion_symbol == 'is different from':
                         print (indentation + "elif " + variable_be + " != " + variable_af + ":")
                     
+                    # logic operators in if instruction
+                    elif logic_operator == 'and':
+                        print (indentation + "if " + variable_be + " and " + variable_af + ":")
+                    elif logic_operator == 'or':
+                        print (indentation + "if " + variable_be + " or " + variable_af + ":")
+                    elif logic_operator == 'not':
+                        print (indentation + "if " + variable_be + " not " + variable_af + ":")
+
             elif c == 'else':
                 indentation = "    "
                 if if_num_1 > 1:
