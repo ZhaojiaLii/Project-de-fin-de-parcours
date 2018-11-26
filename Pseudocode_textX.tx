@@ -7,7 +7,11 @@ Instruction:
 ;
 
 Basic_instructions:
-    Declare | Print | Operator
+    Declare | Print | Operators | Calculation
+;
+
+Calculation:
+    Calculation_simple 
 ;
 
 If_instruction:
@@ -15,11 +19,23 @@ If_instruction:
 ;
 
 If_instruction_startline:
-    'if' variable_be = Variable_be comparasion = Comparasion variable_af = Variable_af 'then'
+    'if' 
+    variable_be = Variable_be 
+    (comparasion = Comparasion)?
+    (logic_operator = Logic_operator)? 
+    variable_af = Variable_af
+     
+    'then'
 ;
 
 If_instruction_elifline:
-    'else if' variable_be = Variable_be comparasion = Comparasion variable_af = Variable_af 'then'
+    'else if' 
+    variable_be = Variable_be 
+    (comparasion = Comparasion)?
+    (logic_operator = Logic_operator)? 
+    variable_af = Variable_af
+     
+    'then'
 ; 
 
 If_instruction_elseline:
@@ -57,8 +73,6 @@ Value:
 
 
 
-
-
 Print:
     Print_string | Print_words
 ;
@@ -80,15 +94,29 @@ Content:
 ;
 
 
+Calculation_simple:
+    variable_be = Variable_be 
+    calculation_operator = Calculation_operator
+    variable_af = Variable_af
+;
 
-Operator:
-    Comparasion 
+
+
+Operators:
+    Comparasion | Calculation_operator | Logic_operator
 ;
 
 Comparasion:
-    'is greater than' | 'is lower than' | 'is more equal' | 'is equal to' | 'is different from' 
+    'is greater than' | 'is lower than' | 'is more equal' | 'is less euqal' | 'is equal to' | 'is different from' 
 ;
 
+Calculation_operator:
+    'plus' | 'minus' | 'multiply' | 'divide' | 'power'
+;
+
+Logic_operator:
+    'and' | 'or' | 'not'
+;
 
 Variable_be:
     var_be = ID
