@@ -18,15 +18,6 @@ print lizhaojia
 print a
 print 'today is a' 
 
-if a is different from p then
-    print a
-else if a is greater than p then
-    input ddd
-    print ddd
-else
-    print c
-    end if
-
 declare asdf
 
 if a is more equal p then
@@ -48,5 +39,3 @@ else if a is equal to p then
 else
     print a
 end if
-   
-a plus b

@@ -101,7 +101,6 @@ Calculation_simple:
 ;
 
 
-
 Operators:
     Comparasion | Calculation_operator | Logic_operator
 ;
@@ -125,7 +124,9 @@ Variable_af:
     var_af = ID
 ;
 
-
+Variable_value:
+    var_value = ID
+;
 
 Comment:
   /\/\/.*$/
