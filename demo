@@ -29,7 +29,7 @@ if a is more equal p then
         else
             print q
         end if
-    else if a is lower than q then
+    else if a or q then
         print p
     else
         print q

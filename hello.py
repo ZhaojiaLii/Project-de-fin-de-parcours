@@ -260,6 +260,8 @@ class Python(object):
                     elif logic_operator == 'not':
                         print (indentation + "elif " + variable_be + " not " + variable_af + ":")
 
+            # if we detect the "else" we can jump directly into the basic instructions
+            # but we still have to control the indentations
             elif c == 'else':
                 indentation = "    "
                 if if_num_1 > 1:
@@ -272,6 +274,9 @@ class Python(object):
                     if_num_1 = if_num_1
                     indentation = ''
                 print (indentation + "else:")
+
+            # detected end if, we will finish the corresponding if instruction
+            # and remind us which if instructgion has been ended
             elif c == 'end if':
                 print ("//number " + str(if_num_1) + " if instruction finished")
                 if_num_1 = if_num_1 - 1
