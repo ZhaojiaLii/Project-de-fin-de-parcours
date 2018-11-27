@@ -5,7 +5,9 @@ By using this pseudocode to python code translation system, we can easily write 
 
 # The construction of our system
 Pseudocode_textX.tx which is written in textX grammer.
+
 hello.py which we used to get the textX model and translate the pseudocode to python code.
+
 demo is the file which we write the pseudocodes.
 
 We combine the three files together, and run the python code, we can get the translated pseudocode (python code) in the command line
