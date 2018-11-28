@@ -3,7 +3,7 @@ Rule_pseudocode:
 ;
 
 Instruction:
-    Basic_instructions | If_instruction 
+    Basic_instructions | If_instruction | For_instruction
 ;
 
 Basic_instructions:
@@ -46,9 +46,31 @@ If_instruction_endline:
     'end if' /\n*/
 ;
 
+For_instruction:
+    For_instruction_startline_1 |For_instruction_startline_2| For_instruction_endline
+;
+
+For_instruction_startline_1:
+    'for'
+    variable_main = Variable_main
+    'in'
+    variable_list = Variable_list
+    'do'
+;
+For_instruction_startline_2:
+    'for'
+    variable_main = Variable_main
+    'in range('
+    variable_range = Variable_range
+    ') do'
+;
+
+For_instruction_endline:
+    'end for'/\n*/
+;
 
 Declare:
-    Declare_variable | Input_variable | Declare_value
+    Declare_variable | Input_variable | Declare_value | Declare_list | Input_list
 ;
 
 Declare_variable:
@@ -61,6 +83,20 @@ Input_variable:
 
 Declare_value:
     variable = Variable /\s*/ 'equal' /\s*/ value = Value /\n*/
+;
+
+Declare_list:
+    'list' /\s*/ variable = Variable 
+;
+
+Input_list:
+    'put in list' /\s*/ variable = Variable /\s*/ ':' 
+    list_variables += List_variables[',']
+    /\n*/
+;
+
+List_variables:
+    list_var = ID
 ;
 
 Variable:
@@ -123,7 +159,15 @@ Variable_be:
 Variable_af:
     var_af = ID
 ;
-
+Variable_main:
+    var_main = ID
+;
+Variable_list:
+    var_list = ID
+;
+Variable_range:
+    var_range = ID
+; 
 Variable_value:
     var_value = ID
 ;
@@ -131,5 +175,3 @@ Variable_value:
 Comment:
   /\/\/.*$/
 ;
-
-

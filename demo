@@ -3,6 +3,12 @@ declare p
 declare c
 declare ddd
 declare q
+list qwerty
+list oiuytt89
+
+put in list aqwerty: asd,ert,rtyu,ertyhgfgh,jythdfb
+put in list qwerty: asd,ert
+
 
 print c
 
@@ -25,9 +31,9 @@ if a is more equal p then
         if a is equal to p then
             input asdf
         else if a and q then
-            print p
+            print qwerty
         else
-            print q
+            print oiuytt89
         end if
     else if a or q then
         print p
@@ -39,3 +45,4 @@ else if a is equal to p then
 else
     print a
 end if
+

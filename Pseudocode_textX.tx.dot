@@ -11,110 +11,144 @@
     edge[dir=black,arrowtail=empty]
 
 
-2157937671416 -> 2157937661032[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
-2157937671416[ label="{Rule_pseudocode|}"]
+2278153109464 -> 2278153107576[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
+2278153109464[ label="{Rule_pseudocode|}"]
 
-2157937661032[ label="{*Instruction|}"]
-2157937661032 -> 2157937668584 [dir=back]
-2157937661032 -> 2157937683688 [dir=back]
+2278153107576[ label="{*Instruction|}"]
+2278153107576 -> 2278153115128 [dir=back]
+2278153107576 -> 2278153112296 [dir=back]
+2278153107576 -> 2278153124568 [dir=back]
 
-2157937668584[ label="{*Basic_instructions|}"]
-2157937668584 -> 2157937685576 [dir=back]
-2157937668584 -> 2157937712008 [dir=back]
-2157937668584 -> 2157937704456 [dir=back]
+2278153115128[ label="{*Basic_instructions|}"]
+2278153115128 -> 2278153100968 [dir=back]
+2278153115128 -> 2278153148168 [dir=back]
+2278153115128 -> 2278153167992 [dir=back]
 
-2157937689352[ label="{*Calculation|}"]
-2157937689352 -> 2157937704456 [dir=back]
+2278153096248[ label="{*Calculation|}"]
+2278153096248 -> 2278153167992 [dir=back]
 
-2157937683688[ label="{*If_instruction|}"]
-2157937683688 -> 2157937692184 [dir=back]
-2157937683688 -> 2157937709176 [dir=back]
+2278153112296[ label="{*If_instruction|}"]
+2278153112296 -> 2278153121736 [dir=back]
+2278153112296 -> 2278153095304 [dir=back]
 
-2157937692184 -> 2157937718616[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2157937692184 -> 2157937728056[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2157937692184[ label="{If_instruction_startline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
+2278153121736 -> 2278153171768[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2278153121736 -> 2278153180264[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2278153121736[ label="{If_instruction_startline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2157937709176 -> 2157937718616[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2157937709176 -> 2157937728056[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2157937709176[ label="{If_instruction_elifline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
+2278153095304 -> 2278153171768[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2278153095304 -> 2278153180264[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2278153095304[ label="{If_instruction_elifline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2157937699736[ label="{If_instruction_elseline|else \\s*}"]
+2278153105688[ label="{If_instruction_elseline|else \\s*}"]
 
-2157937698792[ label="{If_instruction_endline|end if \\n*}"]
+2278153122680[ label="{If_instruction_endline|end if \\n*}"]
 
-2157937685576[ label="{*Declare|}"]
-2157937685576 -> 2157937696904 [dir=back]
-2157937685576 -> 2157937700680 [dir=back]
-2157937685576 -> 2157937710120 [dir=back]
+2278153124568[ label="{*For_instruction|}"]
+2278153124568 -> 2278153127400 [dir=back]
+2278153124568 -> 2278153130232 [dir=back]
 
-2157937696904 -> 2157937687464[arrowtail=diamond, dir=both, headlabel="variable "]
-2157937696904[ label="{Declare_variable|}"]
+2278153127400 -> 2278153183096[arrowtail=diamond, dir=both, headlabel="variable_main "]
+2278153127400 -> 2278153152888[arrowtail=diamond, dir=both, headlabel="variable_list "]
+2278153127400[ label="{For_instruction_startline_1|}"]
 
-2157937700680 -> 2157937687464[arrowtail=diamond, dir=both, headlabel="variable "]
-2157937700680[ label="{Input_variable|}"]
+2278153130232 -> 2278153183096[arrowtail=diamond, dir=both, headlabel="variable_main "]
+2278153130232 -> 2278153197256[arrowtail=diamond, dir=both, headlabel="variable_range "]
+2278153130232[ label="{For_instruction_startline_2|}"]
 
-2157937710120 -> 2157937687464[arrowtail=diamond, dir=both, headlabel="variable "]
-2157937710120 -> 2157937703512[arrowtail=diamond, dir=both, headlabel="value "]
-2157937710120[ label="{Declare_value|}"]
+2278153091528[ label="{For_instruction_endline|end for \\n*}"]
 
-2157937687464[ label="{Variable|+var:ID\l}"]
+2278153100968[ label="{*Declare|}"]
+2278153100968 -> 2278153123624 [dir=back]
+2278153100968 -> 2278153126456 [dir=back]
+2278153100968 -> 2278153131176 [dir=back]
+2278153100968 -> 2278153134008 [dir=back]
+2278153100968 -> 2278153135896 [dir=back]
 
-2157937703512[ label="{Value|+val:OBJECT\l}"]
+2278153123624 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
+2278153123624[ label="{Declare_variable|}"]
 
-2157937712008[ label="{*Print|}"]
-2157937712008 -> 2157937714840 [dir=back]
-2157937712008 -> 2157937713896 [dir=back]
+2278153126456 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
+2278153126456[ label="{Input_variable|}"]
 
-2157937714840 -> 2157937729000[arrowtail=diamond, dir=both, headlabel="content_string "]
-2157937714840[ label="{Print_string|}"]
+2278153131176 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
+2278153131176 -> 2278153150056[arrowtail=diamond, dir=both, headlabel="value "]
+2278153131176[ label="{Declare_value|}"]
 
-2157937713896 -> 2157937715784[arrowtail=diamond, dir=both, headlabel="content "]
-2157937713896[ label="{Print_words|}"]
+2278153134008 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
+2278153134008[ label="{Declare_list|}"]
 
-2157937729000[ label="{Content_string|+con:STRING\l}"]
+2278153135896 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
+2278153135896 -> 2278153139672[arrowtail=diamond, dir=both, headlabel="list_variables 1..*"]
+2278153135896[ label="{Input_list|}"]
 
-2157937715784[ label="{Content|+con:ID\l}"]
+2278153139672[ label="{List_variables|+list_var:ID\l}"]
 
-2157937704456 -> 2157937718616[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2157937704456 -> 2157937728056[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2157937704456[ label="{Calculation_simple|+calculation_operator:Calculation_operator\l}"]
+2278153141560[ label="{Variable|+var:ID\l}"]
 
-2157937686520[ label="{Operators|}"]
+2278153150056[ label="{Value|+val:OBJECT\l}"]
 
-2157937697848[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is less euqal\|is equal to\|is different from}"]
+2278153148168[ label="{*Print|}"]
+2278153148168 -> 2278153156664 [dir=back]
+2278153148168 -> 2278153174600 [dir=back]
 
-2157937712952[ label="{Calculation_operator|plus\|minus\|multiply\|divide\|power}"]
+2278153156664 -> 2278153155720[arrowtail=diamond, dir=both, headlabel="content_string "]
+2278153156664[ label="{Print_string|}"]
 
-2157937727112[ label="{Logic_operator|and\|or\|not}"]
+2278153174600 -> 2278153170824[arrowtail=diamond, dir=both, headlabel="content "]
+2278153174600[ label="{Print_words|}"]
 
-2157937718616[ label="{Variable_be|+var_be:ID\l}"]
+2278153155720[ label="{Content_string|+con:STRING\l}"]
 
-2157937728056[ label="{Variable_af|+var_af:ID\l}"]
+2278153170824[ label="{Content|+con:ID\l}"]
 
-2157937722392[ label="{Comment|\\/\\/.*$}"]
+2278153167992 -> 2278153171768[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2278153167992 -> 2278153180264[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2278153167992[ label="{Calculation_simple|+calculation_operator:Calculation_operator\l}"]
 
-2157937657256[ label="{ID|}"]
+2278153161384[ label="{Operators|}"]
 
-2157937669528[ label="{STRING|}"]
+2278153153832[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is less euqal\|is equal to\|is different from}"]
 
-2157937660088[ label="{BOOL|}"]
+2278153162328[ label="{Calculation_operator|plus\|minus\|multiply\|divide\|power}"]
 
-2157937674248[ label="{INT|}"]
+2278153151000[ label="{Logic_operator|and\|or\|not}"]
 
-2157937675192[ label="{FLOAT|}"]
+2278153171768[ label="{Variable_be|+var_be:ID\l}"]
 
-2157937664808[ label="{NUMBER|}"]
-2157937664808 -> 2157937675192 [dir=back]
-2157937664808 -> 2157937674248 [dir=back]
+2278153180264[ label="{Variable_af|+var_af:ID\l}"]
 
-2157937670472[ label="{BASETYPE|}"]
-2157937670472 -> 2157937664808 [dir=back]
-2157937670472 -> 2157937660088 [dir=back]
-2157937670472 -> 2157937657256 [dir=back]
-2157937670472 -> 2157937669528 [dir=back]
+2278153183096[ label="{Variable_main|+var_main:ID\l}"]
 
-2157937667640[ label="{*OBJECT|}"]
-2157937667640 -> 2157937670472 [dir=back]
+2278153152888[ label="{Variable_list|+var_list:ID\l}"]
+
+2278153197256[ label="{Variable_range|+var_range:ID\l}"]
+
+2278153201032[ label="{Variable_value|+var_value:ID\l}"]
+
+2278153189704[ label="{Comment|\\/\\/.*$}"]
+
+2278157303144[ label="{ID|}"]
+
+2278157306920[ label="{STRING|}"]
+
+2278157312584[ label="{BOOL|}"]
+
+2278157316360[ label="{INT|}"]
+
+2278153090584[ label="{FLOAT|}"]
+
+2278153092472[ label="{NUMBER|}"]
+2278153092472 -> 2278153090584 [dir=back]
+2278153092472 -> 2278157316360 [dir=back]
+
+2278153117960[ label="{BASETYPE|}"]
+2278153117960 -> 2278153092472 [dir=back]
+2278153117960 -> 2278157312584 [dir=back]
+2278153117960 -> 2278157303144 [dir=back]
+2278153117960 -> 2278157306920 [dir=back]
+
+2278153117016[ label="{*OBJECT|}"]
+2278153117016 -> 2278153117960 [dir=back]
 
 
 }
