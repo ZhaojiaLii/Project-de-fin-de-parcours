@@ -11,144 +11,144 @@
     edge[dir=black,arrowtail=empty]
 
 
-2278153109464 -> 2278153107576[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
-2278153109464[ label="{Rule_pseudocode|}"]
+2368612092632 -> 2368612123784[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
+2368612092632[ label="{Rule_pseudocode|}"]
 
-2278153107576[ label="{*Instruction|}"]
-2278153107576 -> 2278153115128 [dir=back]
-2278153107576 -> 2278153112296 [dir=back]
-2278153107576 -> 2278153124568 [dir=back]
+2368612123784[ label="{*Instruction|}"]
+2368612123784 -> 2368612129448 [dir=back]
+2368612123784 -> 2368612122840 [dir=back]
+2368612123784 -> 2368612164376 [dir=back]
 
-2278153115128[ label="{*Basic_instructions|}"]
-2278153115128 -> 2278153100968 [dir=back]
-2278153115128 -> 2278153148168 [dir=back]
-2278153115128 -> 2278153167992 [dir=back]
+2368612129448[ label="{*Basic_instructions|}"]
+2368612129448 -> 2368612137000 [dir=back]
+2368612129448 -> 2368612173816 [dir=back]
+2368612129448 -> 2368612139832 [dir=back]
 
-2278153096248[ label="{*Calculation|}"]
-2278153096248 -> 2278153167992 [dir=back]
+2368612112456[ label="{*Calculation|}"]
+2368612112456 -> 2368612139832 [dir=back]
 
-2278153112296[ label="{*If_instruction|}"]
-2278153112296 -> 2278153121736 [dir=back]
-2278153112296 -> 2278153095304 [dir=back]
+2368612122840[ label="{*If_instruction|}"]
+2368612122840 -> 2368612125672 [dir=back]
+2368612122840 -> 2368612128504 [dir=back]
 
-2278153121736 -> 2278153171768[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2278153121736 -> 2278153180264[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2278153121736[ label="{If_instruction_startline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
+2368612125672 -> 2368612156824[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2368612125672 -> 2368612158712[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2368612125672[ label="{If_instruction_startline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2278153095304 -> 2278153171768[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2278153095304 -> 2278153180264[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2278153095304[ label="{If_instruction_elifline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
+2368612128504 -> 2368612156824[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2368612128504 -> 2368612158712[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2368612128504[ label="{If_instruction_elifline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2278153105688[ label="{If_instruction_elseline|else \\s*}"]
+2368612132280[ label="{If_instruction_elseline|else \\s*}"]
 
-2278153122680[ label="{If_instruction_endline|end if \\n*}"]
+2368612149272[ label="{If_instruction_endline|end if \\n*}"]
 
-2278153124568[ label="{*For_instruction|}"]
-2278153124568 -> 2278153127400 [dir=back]
-2278153124568 -> 2278153130232 [dir=back]
+2368612164376[ label="{*For_instruction|}"]
+2368612164376 -> 2368612137944 [dir=back]
+2368612164376 -> 2368612160600 [dir=back]
 
-2278153127400 -> 2278153183096[arrowtail=diamond, dir=both, headlabel="variable_main "]
-2278153127400 -> 2278153152888[arrowtail=diamond, dir=both, headlabel="variable_list "]
-2278153127400[ label="{For_instruction_startline_1|}"]
+2368612137944 -> 2368612191752[arrowtail=diamond, dir=both, headlabel="variable_main "]
+2368612137944 -> 2368612198360[arrowtail=diamond, dir=both, headlabel="variable_list "]
+2368612137944[ label="{For_instruction_startline_1|}"]
 
-2278153130232 -> 2278153183096[arrowtail=diamond, dir=both, headlabel="variable_main "]
-2278153130232 -> 2278153197256[arrowtail=diamond, dir=both, headlabel="variable_range "]
-2278153130232[ label="{For_instruction_startline_2|}"]
+2368612160600 -> 2368612191752[arrowtail=diamond, dir=both, headlabel="variable_main "]
+2368612160600 -> 2368612202136[arrowtail=diamond, dir=both, headlabel="variable_range "]
+2368612160600[ label="{For_instruction_startline_2|}"]
 
-2278153091528[ label="{For_instruction_endline|end for \\n*}"]
+2368612136056[ label="{For_instruction_endline|end for \\n*}"]
 
-2278153100968[ label="{*Declare|}"]
-2278153100968 -> 2278153123624 [dir=back]
-2278153100968 -> 2278153126456 [dir=back]
-2278153100968 -> 2278153131176 [dir=back]
-2278153100968 -> 2278153134008 [dir=back]
-2278153100968 -> 2278153135896 [dir=back]
+2368612137000[ label="{*Declare|}"]
+2368612137000 -> 2368612141720 [dir=back]
+2368612137000 -> 2368612151160 [dir=back]
+2368612137000 -> 2368612153048 [dir=back]
+2368612137000 -> 2368612167208 [dir=back]
+2368612137000 -> 2368612165320 [dir=back]
 
-2278153123624 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
-2278153123624[ label="{Declare_variable|}"]
+2368612141720 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
+2368612141720[ label="{Declare_variable|}"]
 
-2278153126456 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
-2278153126456[ label="{Input_variable|}"]
+2368612151160 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
+2368612151160[ label="{Input_variable|}"]
 
-2278153131176 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
-2278153131176 -> 2278153150056[arrowtail=diamond, dir=both, headlabel="value "]
-2278153131176[ label="{Declare_value|}"]
+2368612153048 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
+2368612153048 -> 2368612170040[arrowtail=diamond, dir=both, headlabel="value "]
+2368612153048[ label="{Declare_value|}"]
 
-2278153134008 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
-2278153134008[ label="{Declare_list|}"]
+2368612167208 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
+2368612167208[ label="{Declare_list|}"]
 
-2278153135896 -> 2278153141560[arrowtail=diamond, dir=both, headlabel="variable "]
-2278153135896 -> 2278153139672[arrowtail=diamond, dir=both, headlabel="list_variables 1..*"]
-2278153135896[ label="{Input_list|}"]
+2368612165320 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
+2368612165320 -> 2368612155880[arrowtail=diamond, dir=both, headlabel="list_variables 1..*"]
+2368612165320[ label="{Input_list|}"]
 
-2278153139672[ label="{List_variables|+list_var:ID\l}"]
+2368612155880[ label="{List_variables|+list_var:ID\l}"]
 
-2278153141560[ label="{Variable|+var:ID\l}"]
+2368612159656[ label="{Variable|+var:ID\l}"]
 
-2278153150056[ label="{Value|+val:OBJECT\l}"]
+2368612170040[ label="{Value|+val:OBJECT\l}"]
 
-2278153148168[ label="{*Print|}"]
-2278153148168 -> 2278153156664 [dir=back]
-2278153148168 -> 2278153174600 [dir=back]
+2368612173816[ label="{*Print|}"]
+2368612173816 -> 2368612175704 [dir=back]
+2368612173816 -> 2368612184200 [dir=back]
 
-2278153156664 -> 2278153155720[arrowtail=diamond, dir=both, headlabel="content_string "]
-2278153156664[ label="{Print_string|}"]
+2368612175704 -> 2368612172872[arrowtail=diamond, dir=both, headlabel="content_string "]
+2368612175704[ label="{Print_string|}"]
 
-2278153174600 -> 2278153170824[arrowtail=diamond, dir=both, headlabel="content "]
-2278153174600[ label="{Print_words|}"]
+2368612184200 -> 2368612162488[arrowtail=diamond, dir=both, headlabel="content "]
+2368612184200[ label="{Print_words|}"]
 
-2278153155720[ label="{Content_string|+con:STRING\l}"]
+2368612172872[ label="{Content_string|+con:STRING\l}"]
 
-2278153170824[ label="{Content|+con:ID\l}"]
+2368612162488[ label="{Content|+con:ID\l}"]
 
-2278153167992 -> 2278153171768[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2278153167992 -> 2278153180264[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2278153167992[ label="{Calculation_simple|+calculation_operator:Calculation_operator\l}"]
+2368612139832 -> 2368612156824[arrowtail=diamond, dir=both, headlabel="variable_be "]
+2368612139832 -> 2368612158712[arrowtail=diamond, dir=both, headlabel="variable_af "]
+2368612139832[ label="{Calculation_simple|+calculation_operator:Calculation_operator\l}"]
 
-2278153161384[ label="{Operators|}"]
+2368612177592[ label="{Operators|}"]
 
-2278153153832[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is less euqal\|is equal to\|is different from}"]
+2368612147384[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is less euqal\|is equal to\|is different from}"]
 
-2278153162328[ label="{Calculation_operator|plus\|minus\|multiply\|divide\|power}"]
+2368612180424[ label="{Calculation_operator|plus\|minus\|multiply\|divide\|power}"]
 
-2278153151000[ label="{Logic_operator|and\|or\|not}"]
+2368612185144[ label="{Logic_operator|and\|or\|not}"]
 
-2278153171768[ label="{Variable_be|+var_be:ID\l}"]
+2368612156824[ label="{Variable_be|+var_be:ID\l}"]
 
-2278153180264[ label="{Variable_af|+var_af:ID\l}"]
+2368612158712[ label="{Variable_af|+var_af:ID\l}"]
 
-2278153183096[ label="{Variable_main|+var_main:ID\l}"]
+2368612191752[ label="{Variable_main|+var_main:ID\l}"]
 
-2278153152888[ label="{Variable_list|+var_list:ID\l}"]
+2368612198360[ label="{Variable_list|+var_list:ID\l}"]
 
-2278153197256[ label="{Variable_range|+var_range:ID\l}"]
+2368612202136[ label="{Variable_range|+var_range:ID\l}"]
 
-2278153201032[ label="{Variable_value|+var_value:ID\l}"]
+2368612195528[ label="{Variable_value|+var_value:ID\l}"]
 
-2278153189704[ label="{Comment|\\/\\/.*$}"]
+2368612196472[ label="{Comment|\\/\\/.*$}"]
 
-2278157303144[ label="{ID|}"]
+2368612103016[ label="{ID|}"]
 
-2278157306920[ label="{STRING|}"]
+2368612104904[ label="{STRING|}"]
 
-2278157312584[ label="{BOOL|}"]
+2368612084136[ label="{BOOL|}"]
 
-2278157316360[ label="{INT|}"]
+2368612110568[ label="{INT|}"]
 
-2278153090584[ label="{FLOAT|}"]
+2368612086968[ label="{FLOAT|}"]
 
-2278153092472[ label="{NUMBER|}"]
-2278153092472 -> 2278153090584 [dir=back]
-2278153092472 -> 2278157316360 [dir=back]
+2368612113400[ label="{NUMBER|}"]
+2368612113400 -> 2368612086968 [dir=back]
+2368612113400 -> 2368612110568 [dir=back]
 
-2278153117960[ label="{BASETYPE|}"]
-2278153117960 -> 2278153092472 [dir=back]
-2278153117960 -> 2278157312584 [dir=back]
-2278153117960 -> 2278157303144 [dir=back]
-2278153117960 -> 2278157306920 [dir=back]
+2368612115288[ label="{BASETYPE|}"]
+2368612115288 -> 2368612113400 [dir=back]
+2368612115288 -> 2368612084136 [dir=back]
+2368612115288 -> 2368612103016 [dir=back]
+2368612115288 -> 2368612104904 [dir=back]
 
-2278153117016[ label="{*OBJECT|}"]
-2278153117016 -> 2278153117960 [dir=back]
+2368612119064[ label="{*OBJECT|}"]
+2368612119064 -> 2368612115288 [dir=back]
 
 
 }
