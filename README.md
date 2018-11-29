@@ -13,7 +13,7 @@ By using this pseudocode to python code translation system, we can easily write 
 # The construction of our system
 1.Pseudocode_textX.tx which is written in textX grammer, can allow us to rule the system.
 
-2.hello.py which we used to get the textX model and translate the pseudocode to python code.
+2.Pseudocode-Python.py which we used to get the textX model and translate the pseudocode to python code.
 
 3.demo is the file which we write the pseudocodes, which will be translated.
 
