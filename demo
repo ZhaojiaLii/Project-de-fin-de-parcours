@@ -3,6 +3,8 @@ declare p
 declare c
 declare ddd
 declare q
+declare min
+declare max
 list qwerty
 list oiuytt89
 
@@ -45,3 +47,10 @@ else
     print a
 end if
 
+while a is lower than c do
+    min equal a
+    print min
+else
+    max equal a
+    print max
+end while

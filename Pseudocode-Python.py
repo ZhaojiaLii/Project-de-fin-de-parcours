@@ -211,7 +211,32 @@ class Python(object):
                     print (variable_be + '/' + variable_af)
                 elif c.calculation_operator == 'power':
                     print (variable_be + '**' + variable_af)
-            
+
+            # While instruction:
+
+            elif c.__class__.__name__ == 'While_instruction_startline':
+                print('\n' + "// While instruction begin:")
+                variable_be = '{}'.format(c.variable_be.var_be)
+                variable_af = '{}'.format(c.variable_af.var_af)
+                comparasion_symbol = '{}'.format(c.comparasion)
+
+                if comparasion_symbol == 'is greater than':
+                    print('\n' + "while " + variable_be + ' ' + ">" + ' ' + variable_af + ":")
+                elif comparasion_symbol == 'is lower than':
+                    print ('\n' + "while " + variable_be + ' ' + "<" + ' ' + variable_af + ":")                      
+                elif comparasion_symbol == 'is more equal':
+                    print ('\n' + "while " + variable_be + ' ' + ">=" + ' ' + variable_af + ":")                     
+                elif comparasion_symbol == 'is equal to':
+                    print ('\n' + "while " + variable_be + ' ' + "==" + ' ' + variable_af + ":")                
+                elif comparasion_symbol == 'is different from':
+                    print ('\n' + "while " + variable_be + ' ' + "!=" + ' ' + variable_af + ":")
+
+            elif c.__class__.__name__ == 'While_instruction_else':
+                print('\n' + "else:")
+
+            elif c == 'end while':
+                print("// The end of while")
+
             # If instruction is as below:
             
             elif c.__class__.__name__ == 'If_instruction_startline':

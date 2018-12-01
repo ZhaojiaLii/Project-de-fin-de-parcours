@@ -3,7 +3,7 @@ Rule_pseudocode:
 ;
 
 Instruction:
-    Basic_instructions | If_instruction | For_instruction
+    Basic_instructions | If_instruction | For_instruction | While_instruction
 ;
 
 Basic_instructions:
@@ -13,6 +13,28 @@ Basic_instructions:
 Calculation:
     Calculation_simple 
 ;
+
+While_instruction:
+    While_instruction_startline | While_instruction_else | While_instruction_endline
+;
+
+While_instruction_startline:
+    'while'
+    variable_be = Variable_be
+    (comparasion = Comparasion)?
+    variable_af = Variable_af
+    'do'
+;
+
+While_instruction_else:
+    'else' /\s*/
+;
+
+While_instruction_endline:
+    'end while'
+;
+
+
 
 If_instruction:
     If_instruction_startline | If_instruction_elifline | If_instruction_elseline | If_instruction_endline
