@@ -48,8 +48,10 @@ else
 end if
 
 while a is lower than c do
-    min equal a
-    print min
+    if a is equal to p then
+        min equal a
+        print min
+    end if
 else
     max equal a
     print max

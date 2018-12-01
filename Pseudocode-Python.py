@@ -29,8 +29,11 @@ class Python(object):
         list_list = []  # insure the variable is a list and already in our list_name
         if_num_1 = 0    # let us know the number of the if instruction
         for_num_1 = 0   # let us know the number of the for instruction
+        while_num_1 = 0
         indentation = "    "    # control the indentation of python code
         indentation_for="   "
+        indentation_while="   "
+        indentation_final=''
 
         
         # where we get the instructions from the model and process them
@@ -61,6 +64,16 @@ class Python(object):
             elif for_num_1 > 2:
                 for i in range(for_num_1-2):
                     indentation_for = indentation_for + "    "
+            
+            if while_num_1 == 0:
+                indentation_while=""
+            elif while_num_1 == 1:
+                indentation_while="    "
+            elif while_num_1 == 2:
+                indentation_while = "        "
+            elif while_num_1 > 2:
+                for i in range(while_num_1-2):
+                    indentation_while = indentation_while + "    "
 
             # we start to process the pseudocode from here:
             if c.__class__.__name__ == 'Declare_variable':                
@@ -111,12 +124,15 @@ class Python(object):
                     if if_num_1 != 0:
                         print (indentation + var_input + " = raw_input('input:"+var_input+"')" )
                     else: 
-                        if for_num_1!= 0:
-                            print (indentation_for + var_input + " = raw_input('input:"+var_input+"')" )
-                            if isinstance(var_declare.list):   # 判断是否是list?????
-                                list_list.append(var_declare)  
+                        if while_num_1 != 0:
+                            print (indentation_while + var_input + " = raw_input('input:"+var_input+"')" )
                         else:
-                            print (var_input + " = raw_input('input:"+var_input+"')" )    
+                            if for_num_1!= 0:
+                                print (indentation_for + var_input + " = raw_input('input:"+var_input+"')" )
+                                if isinstance(var_declare.list):   # 判断是否是list?????
+                                    list_list.append(var_declare)  
+                            else:
+                                print (var_input + " = raw_input('input:"+var_input+"')" )    
 
             elif c.__class__.__name__ == 'Declare_value':
                 # here we can assign the value to the variables we have declared
@@ -129,6 +145,8 @@ class Python(object):
                         print (indentation + var_value+' = '+value)
                     elif for_num_1!=0:
                         print (indentation_for + var_value+' = '+value)
+                    elif while_num_1 != 0:
+                        print (indentation_while + var_value+' = '+value)
                     else:
                         print (var_value+' = '+value)
                     # we use the list to know which variable we have declared but not assigned value
@@ -140,6 +158,8 @@ class Python(object):
                         print (indentation + var_value + " = '"+value+"'")
                     elif for_num_1!= 0:
                         print (indentation_for + var_value + " = '"+value+"'")
+                    elif while_num_1!= 0:
+                        print (indentation_while + var_value + " = '"+value+"'")
                     else:
                         print (var_value+" = '"+value+"'")
                     need_value_list.remove(var_value)   
@@ -156,6 +176,8 @@ class Python(object):
                         print (indentation + 'print '+ content)
                     elif for_num_1 != 0:
                         print (indentation_for + 'print '+ content)
+                    elif while_num_1 != 0:
+                        print (indentation_while + 'print '+ content)
                     else:
                         print ('print '+ content)
                 elif content in list_name:
@@ -164,6 +186,8 @@ class Python(object):
                             print (indentation + 'print '+ content)
                         elif for_num_1 != 0:
                             print (indentation_for + 'print '+ content)
+                        elif while_num_1 != 0:
+                            print (indentation_while + 'print '+ content)
                         else:
                             print ('print '+ content)
                     else:
@@ -174,6 +198,9 @@ class Python(object):
                         elif for_num_1 != 0:
                             print (indentation_for + 'print '+ content)
                             print (indentation_for + '//can not print empty list, please assign values first')
+                        elif while_num_1 != 0:
+                            print (indentation_while + 'print '+ content)
+                            print (indentation_while + '//can not print empty list, please assign values first')
                         else:
                             print ('print '+ content)
                             print ('//can not print empty list, please assign values first') 
@@ -185,6 +212,8 @@ class Python(object):
                         print (indentation + 'print "'+ content +'"')
                     elif for_num_1!= 0:
                         print (indentation_for + 'print "'+ content+'"')
+                    elif while_num_1!= 0:
+                        print (indentation_while + 'print "'+ content+'"')
                     else:
                         print ('print "'+ content +'"')
 
@@ -194,6 +223,8 @@ class Python(object):
                     print (indentation + 'print '+'"'+content+'"')
                 elif for_num_1 != 0:
                     print (indentation_for + 'print '+'"'+content+'"')
+                elif while_num_1 != 0:
+                    print (indentation_while + 'print '+'"'+content+'"')
                 else:
                     print ('print '+'"'+content+'"')
 
@@ -215,24 +246,51 @@ class Python(object):
             # While instruction:
 
             elif c.__class__.__name__ == 'While_instruction_startline':
-                print('\n' + "// While instruction begin:")
+                indentation_while = "    "
+
+                if while_num_1 == 0:
+                    print ('\n' + "//while instruction as below:") 
+                else:
+                    while_num_1 = while_num_1
+
+                a = 0   # use a variable to know the two variables in IF are all declared
+                while_num_1 = while_num_1 + 1  # let us know this is which if instruction
                 variable_be = '{}'.format(c.variable_be.var_be)
                 variable_af = '{}'.format(c.variable_af.var_af)
                 comparasion_symbol = '{}'.format(c.comparasion)
 
+                if while_num_1 > 1:
+                    if while_num_1 == 2:
+                        indentation_while = indentation_while
+                    elif while_num_1 > 2:
+                        for i in range(while_num_1-2):
+                            indentation_while = indentation_while + "    "
+                else:
+                    while_num_1 = while_num_1
+                    indentation_while = ''
+
                 if comparasion_symbol == 'is greater than':
-                    print('\n' + "while " + variable_be + ' ' + ">" + ' ' + variable_af + ":")
+                    print(indentation_while + "while " + variable_be + ' ' + ">" + ' ' + variable_af + ":")
                 elif comparasion_symbol == 'is lower than':
-                    print ('\n' + "while " + variable_be + ' ' + "<" + ' ' + variable_af + ":")                      
+                    print (indentation_while + "while " + variable_be + ' ' + "<" + ' ' + variable_af + ":")                      
                 elif comparasion_symbol == 'is more equal':
-                    print ('\n' + "while " + variable_be + ' ' + ">=" + ' ' + variable_af + ":")                     
+                    print (indentation_while + "while " + variable_be + ' ' + ">=" + ' ' + variable_af + ":")                     
                 elif comparasion_symbol == 'is equal to':
-                    print ('\n' + "while " + variable_be + ' ' + "==" + ' ' + variable_af + ":")                
+                    print (indentation_while + "while " + variable_be + ' ' + "==" + ' ' + variable_af + ":")                
                 elif comparasion_symbol == 'is different from':
-                    print ('\n' + "while " + variable_be + ' ' + "!=" + ' ' + variable_af + ":")
+                    print (indentation_while + "while " + variable_be + ' ' + "!=" + ' ' + variable_af + ":")
 
             elif c.__class__.__name__ == 'While_instruction_else':
-                print('\n' + "else:")
+                indentation_while = "    "
+                if while_num_1 > 1:
+                    if while_num_1 == 2:
+                        indentation_while = indentation_while
+                    elif while_num_1 > 2:
+                        for i in range(while_num_1-2):
+                            indentation_while = indentation_while + indentation_while
+                else:
+                    while_num_1 = while_num_1
+                    indentation_while = ''
 
             elif c == 'end while':
                 print("// The end of while")
