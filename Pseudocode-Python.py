@@ -257,8 +257,8 @@ class Python(object):
                 else:
                     while_num_1 = while_num_1
 
-                a = 0   # use a variable to know the two variables in IF are all declared
-                while_num_1 = while_num_1 + 1  # let us know this is which if instruction
+                a = 0   # use a variable to know the two variables in while are all declared
+                while_num_1 = while_num_1 + 1  # let us know this is which while instruction
                 variable_be = '{}'.format(c.variable_be.var_be)
                 variable_af = '{}'.format(c.variable_af.var_af)
                 comparasion_symbol = '{}'.format(c.comparasion)

@@ -48,13 +48,15 @@ else
 end if
 
 while a is lower than c do
-    if a is equal to p then
-        min equal a
-        print min
-    end if
-else
-    max equal a
-    print max
+    while a is equal to p do
+        if a is equal to p then
+            min equal a
+            print min
+        end if
+    else
+        max equal a
+        print max
+    end while
 end while
 
 for x in qwerty do
