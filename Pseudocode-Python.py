@@ -26,14 +26,16 @@ class Python(object):
         need_value_list = []
         have_value_list = []  
         list_already_have_value = []
-        list_list = []  # insure the variable is a list and already in our list_name
+        for_list = [] # specialized in for instruction
         if_num_1 = 0    # let us know the number of the if instruction
         for_num_1 = 0   # let us know the number of the for instruction
+        error_for = 0   # let us konw if there is an error in for condition
         while_num_1 = 0
         indentation = "    "    # control the indentation of python code
         indentation_for="   "
         indentation_while="   "
         indentation_final=''
+        for_variable_main=""
 
         
         # where we get the instructions from the model and process them
@@ -129,8 +131,6 @@ class Python(object):
                         else:
                             if for_num_1!= 0:
                                 print (indentation_for + var_input + " = raw_input('input:"+var_input+"')" )
-                                if isinstance(var_declare.list):   # 判断是否是list?????
-                                    list_list.append(var_declare)  
                             else:
                                 print (var_input + " = raw_input('input:"+var_input+"')" )    
 
@@ -171,7 +171,11 @@ class Python(object):
                 content = '{}'.format(c.content.con)
                 # we can use the list to help us know the variable we want to print is 
                 # a variable in our declare list or just a String
-                if content in declare_list and input_list:
+                if error_for!=0:
+                    print("//please check the pseudocode of <for condition>")
+                elif content in for_list:
+                    print(indentation_for + 'print '+content)
+                elif content in declare_list and input_list:
                     if if_num_1 != 0:
                         print (indentation + 'print '+ content)
                     elif for_num_1 != 0:
@@ -442,55 +446,84 @@ class Python(object):
                 print ("//number " + str(if_num_1) + " if instruction finished")
                 if_num_1 = if_num_1 - 1
 
-            # for conditions is below:   
-            #first one is related to list:
+            # for conditions is below:
+            # we define two different conditions in for 
+            #first one is related to list which has value:
             elif c.__class__.__name__ == 'For_instruction_startline_1':
-                indentation_for = "    "
+                indentation_for = ""
+                error_for=0
                 a=0
+                for_num_1= for_num_1+ 1
                 variable_main = '{}'.format(c.variable_main.var_main)
-                variable_list = '{}'.format(c.variable_range.var_list)
+                variable_list = '{}'.format(c.variable_list.var_list)
 
-            # ensure the parameters is avaliable
+                if for_num_1 > 1:
+                    for i in range(for_num_1- 1):
+                        indentation_for = indentation_for + "    "
+                
+            # ensure the parameters is avaliable:
+            # the former one shouled be charactors , and second one should be a valued list in this condition
                 if isinstance(variable_main,str):
-                    a = a + 1                
+                    for_list.append(variable_main)
+                    a = a + 1   
+                             
                 else:
                     print ("//" + variable_main + " is not a string, please use string")
                 
-                if variable_list in list_list:
+                if variable_list in list_already_have_value:
                     a = a + 1                
-                elif variable_list in declare_list:
-                    print ("//" + variable_list + " is not a valued variable, please give a value first.")  
+                elif variable_list in list_name:
+                    print ("//"+ variable_list + " is not a declared variable, please give a value first.")  
+                    error_for=1
                 else:
-                    print ("//" + variable_list + " is not a declared variable, please declare first.")
-                
+                    print ("//" + variable_list + " is not a valued variable, please declare first.")
+                    error_for=1
                 if a ==2:
-                    print ("for "+variable_main+" in "+variable_range+" do")
+                    print (indentation_for+"for "+variable_main+" in "+variable_list+":")
 
-            #second one is related to range:
+            #second one is related to range (for example: numbers):
             elif c.__class__.__name__ == 'For_instruction_startline_2':
-                indentation_for = "    "
+                indentation_for = ""
+                error_for=0
                 a=0
+                for_num_1=for_num_1+ 1
                 variable_main = '{}'.format(c.variable_main.var_main)
                 variable_range = '{}'.format(c.variable_range.var_range)
 
+                if for_num_1 > 1:
+                    for i in range(for_num_1- 1):
+                        indentation_for = indentation_for + "    "
+
                 # ensure the parameters is avaliable
                 if isinstance(variable_main,str):
-                    a = a + 1                
+                    a = a + 1    
+                    for_list.append(variable_main)
+                    
                 else:
                     print ("//" + variable_main + " is not a string, please use string")
                 
-                if isinstance(variable_range,int):
+                if isinstance(variable_range,str):
                     a = a + 1                
                 else:
-                    print ("//" + variable_list + " is not a number, please give a number first.")  
+                    print ("//" + variable_range + " is not a number, please give a number firstly")  
                 
                 if a ==2:
-                    print ("for "+variable_main+" in range("+variable_range+") do")
+                    print (indentation_for+"for "+variable_main+" in range("+variable_range+"):")
                 
                 
             elif c == 'end for':
-                print ("//for instruction finished")
-                for_num_1 = for_num_1 - 1
+                #if it is not a correct for instruction:
+                if error_for!=0:
+                    print("//wrong for instriuction finished")
+                    for_num_1 = for_num_1 -1
+                #if it is a correct for instruction:
+                else:
+                    print ("//for instruction finished")
+                    for_num_1 = for_num_1 - 1
+                #delete the temporary parameters in for instruction
+                    for_list.pop()
+            
+                
                 
         # show the values we have not given values at the last of the python code
 

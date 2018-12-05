@@ -11,144 +11,156 @@
     edge[dir=black,arrowtail=empty]
 
 
-2368612092632 -> 2368612123784[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
-2368612092632[ label="{Rule_pseudocode|}"]
+61275384 -> 61318808[arrowtail=diamond, dir=both, headlabel="variable_be "]
+61275384 -> 61326360[arrowtail=diamond, dir=both, headlabel="variable_af "]
+61275384[ label="{Calculation_simple|+calculation_operator:Calculation_operator\l}"]
 
-2368612123784[ label="{*Instruction|}"]
-2368612123784 -> 2368612129448 [dir=back]
-2368612123784 -> 2368612122840 [dir=back]
-2368612123784 -> 2368612164376 [dir=back]
+60244936[ label="{*While_instruction|}"]
+60244936 -> 60247768 [dir=back]
 
-2368612129448[ label="{*Basic_instructions|}"]
-2368612129448 -> 2368612137000 [dir=back]
-2368612129448 -> 2368612173816 [dir=back]
-2368612129448 -> 2368612139832 [dir=back]
+61279160[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is less euqal\|is equal to\|is different from}"]
 
-2368612112456[ label="{*Calculation|}"]
-2368612112456 -> 2368612139832 [dir=back]
+61303704[ label="{Content|+con:ID\l}"]
 
-2368612122840[ label="{*If_instruction|}"]
-2368612122840 -> 2368612125672 [dir=back]
-2368612122840 -> 2368612128504 [dir=back]
+61318808[ label="{Variable_be|+var_be:ID\l}"]
 
-2368612125672 -> 2368612156824[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2368612125672 -> 2368612158712[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2368612125672[ label="{If_instruction_startline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
+61271608 -> 61325416[arrowtail=diamond, dir=both, headlabel="variable_main "]
+61271608 -> 61331080[arrowtail=diamond, dir=both, headlabel="variable_list "]
+61271608[ label="{For_instruction_startline_1|}"]
 
-2368612128504 -> 2368612156824[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2368612128504 -> 2368612158712[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2368612128504[ label="{If_instruction_elifline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
+61294264 -> 61293320[arrowtail=diamond, dir=both, headlabel="variable "]
+61294264[ label="{Declare_variable|}"]
 
-2368612132280[ label="{If_instruction_elseline|else \\s*}"]
+61297096 -> 61325416[arrowtail=diamond, dir=both, headlabel="variable_main "]
+61297096 -> 61329192[arrowtail=diamond, dir=both, headlabel="variable_range "]
+61297096[ label="{For_instruction_startline_2|}"]
 
-2368612149272[ label="{If_instruction_endline|end if \\n*}"]
+61308424[ label="{*Print|}"]
+61308424 -> 61298984 [dir=back]
+61308424 -> 61288600 [dir=back]
 
-2368612164376[ label="{*For_instruction|}"]
-2368612164376 -> 2368612137944 [dir=back]
-2368612164376 -> 2368612160600 [dir=back]
+60250600[ label="{While_instruction_else|else \\s*}"]
 
-2368612137944 -> 2368612191752[arrowtail=diamond, dir=both, headlabel="variable_main "]
-2368612137944 -> 2368612198360[arrowtail=diamond, dir=both, headlabel="variable_list "]
-2368612137944[ label="{For_instruction_startline_1|}"]
+60255320[ label="{*If_instruction|}"]
+60255320 -> 60259096 [dir=back]
+60255320 -> 60264760 [dir=back]
 
-2368612160600 -> 2368612191752[arrowtail=diamond, dir=both, headlabel="variable_main "]
-2368612160600 -> 2368612202136[arrowtail=diamond, dir=both, headlabel="variable_range "]
-2368612160600[ label="{For_instruction_startline_2|}"]
+61316920[ label="{Logic_operator|and\|or\|not}"]
 
-2368612136056[ label="{For_instruction_endline|end for \\n*}"]
+60212840[ label="{Variable_value|+var_value:ID\l}"]
 
-2368612137000[ label="{*Declare|}"]
-2368612137000 -> 2368612141720 [dir=back]
-2368612137000 -> 2368612151160 [dir=back]
-2368612137000 -> 2368612153048 [dir=back]
-2368612137000 -> 2368612167208 [dir=back]
-2368612137000 -> 2368612165320 [dir=back]
+61309368[ label="{Operators|}"]
 
-2368612141720 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
-2368612141720[ label="{Declare_variable|}"]
+61319752 -> 61293320[arrowtail=diamond, dir=both, headlabel="variable "]
+61319752 -> 61302760[arrowtail=diamond, dir=both, headlabel="list_variables 1..*"]
+61319752[ label="{Input_list|}"]
 
-2368612151160 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
-2368612151160[ label="{Input_variable|}"]
+61290488[ label="{For_instruction_endline|end for \\n*}"]
 
-2368612153048 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
-2368612153048 -> 2368612170040[arrowtail=diamond, dir=both, headlabel="value "]
-2368612153048[ label="{Declare_value|}"]
+61293320[ label="{Variable|+var:ID\l}"]
 
-2368612167208 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
-2368612167208[ label="{Declare_list|}"]
+61326360[ label="{Variable_af|+var_af:ID\l}"]
 
-2368612165320 -> 2368612159656[arrowtail=diamond, dir=both, headlabel="variable "]
-2368612165320 -> 2368612155880[arrowtail=diamond, dir=both, headlabel="list_variables 1..*"]
-2368612165320[ label="{Input_list|}"]
+61274440 -> 61293320[arrowtail=diamond, dir=both, headlabel="variable "]
+61274440 -> 61305592[arrowtail=diamond, dir=both, headlabel="value "]
+61274440[ label="{Declare_value|}"]
 
-2368612155880[ label="{List_variables|+list_var:ID\l}"]
+61269720[ label="{*For_instruction|}"]
+61269720 -> 61271608 [dir=back]
+61269720 -> 61297096 [dir=back]
 
-2368612159656[ label="{Variable|+var:ID\l}"]
+60219448[ label="{*Instruction|}"]
+60219448 -> 60261928 [dir=back]
+60219448 -> 60255320 [dir=back]
+60219448 -> 61269720 [dir=back]
+60219448 -> 60244936 [dir=back]
 
-2368612170040[ label="{Value|+val:OBJECT\l}"]
+61298984 -> 61300872[arrowtail=diamond, dir=both, headlabel="content_string "]
+61298984[ label="{Print_string|}"]
 
-2368612173816[ label="{*Print|}"]
-2368612173816 -> 2368612175704 [dir=back]
-2368612173816 -> 2368612184200 [dir=back]
+60256264[ label="{While_instruction_endline|end while}"]
 
-2368612175704 -> 2368612172872[arrowtail=diamond, dir=both, headlabel="content_string "]
-2368612175704[ label="{Print_string|}"]
+61305592[ label="{Value|+val:OBJECT\l}"]
 
-2368612184200 -> 2368612162488[arrowtail=diamond, dir=both, headlabel="content "]
-2368612184200[ label="{Print_words|}"]
+60261928[ label="{*Basic_instructions|}"]
+60261928 -> 61287656 [dir=back]
+60261928 -> 61308424 [dir=back]
+60261928 -> 61275384 [dir=back]
 
-2368612172872[ label="{Content_string|+con:STRING\l}"]
+61281048[ label="{Calculation_operator|plus\|minus\|multiply\|divide\|power}"]
 
-2368612162488[ label="{Content|+con:ID\l}"]
+60218504 -> 60219448[arrowtail=diamond, dir=both, headlabel="instruction 0..*"]
+60218504[ label="{Rule_pseudocode|}"]
 
-2368612139832 -> 2368612156824[arrowtail=diamond, dir=both, headlabel="variable_be "]
-2368612139832 -> 2368612158712[arrowtail=diamond, dir=both, headlabel="variable_af "]
-2368612139832[ label="{Calculation_simple|+calculation_operator:Calculation_operator\l}"]
+61302760[ label="{List_variables|+list_var:ID\l}"]
 
-2368612177592[ label="{Operators|}"]
+61300872[ label="{Content_string|+con:STRING\l}"]
 
-2368612147384[ label="{Comparasion|is greater than\|is lower than\|is more equal\|is less euqal\|is equal to\|is different from}"]
+61287656[ label="{*Declare|}"]
+61287656 -> 61294264 [dir=back]
+61287656 -> 61272552 [dir=back]
+61287656 -> 61274440 [dir=back]
+61287656 -> 61280104 [dir=back]
+61287656 -> 61319752 [dir=back]
 
-2368612180424[ label="{Calculation_operator|plus\|minus\|multiply\|divide\|power}"]
+61331080[ label="{Variable_list|+var_list:ID\l}"]
 
-2368612185144[ label="{Logic_operator|and\|or\|not}"]
+60260040[ label="{Comment|\\/\\/.*$}"]
 
-2368612156824[ label="{Variable_be|+var_be:ID\l}"]
+61329192[ label="{Variable_range|+var_range:INT\l}"]
 
-2368612158712[ label="{Variable_af|+var_af:ID\l}"]
+60264760 -> 61318808[arrowtail=diamond, dir=both, headlabel="variable_be "]
+60264760 -> 61326360[arrowtail=diamond, dir=both, headlabel="variable_af "]
+60264760[ label="{If_instruction_elifline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2368612191752[ label="{Variable_main|+var_main:ID\l}"]
+60259096 -> 61318808[arrowtail=diamond, dir=both, headlabel="variable_be "]
+60259096 -> 61326360[arrowtail=diamond, dir=both, headlabel="variable_af "]
+60259096[ label="{If_instruction_startline|+comparasion:Comparasion\l+logic_operator:Logic_operator\l}"]
 
-2368612198360[ label="{Variable_list|+var_list:ID\l}"]
+60251544[ label="{*Calculation|}"]
+60251544 -> 61275384 [dir=back]
 
-2368612202136[ label="{Variable_range|+var_range:ID\l}"]
+61325416[ label="{Variable_main|+var_main:ID\l}"]
 
-2368612195528[ label="{Variable_value|+var_value:ID\l}"]
+60247768 -> 61318808[arrowtail=diamond, dir=both, headlabel="variable_be "]
+60247768 -> 61326360[arrowtail=diamond, dir=both, headlabel="variable_af "]
+60247768[ label="{While_instruction_startline|+comparasion:Comparasion\l}"]
 
-2368612196472[ label="{Comment|\\/\\/.*$}"]
+61272552 -> 61293320[arrowtail=diamond, dir=both, headlabel="variable "]
+61272552[ label="{Input_variable|}"]
 
-2368612103016[ label="{ID|}"]
+61288600 -> 61303704[arrowtail=diamond, dir=both, headlabel="content "]
+61288600[ label="{Print_words|}"]
 
-2368612104904[ label="{STRING|}"]
+61280104 -> 61293320[arrowtail=diamond, dir=both, headlabel="variable "]
+61280104[ label="{Declare_list|}"]
 
-2368612084136[ label="{BOOL|}"]
+60267592[ label="{If_instruction_elseline|else \\s*}"]
 
-2368612110568[ label="{INT|}"]
+61283880[ label="{If_instruction_endline|end if \\n*}"]
 
-2368612086968[ label="{FLOAT|}"]
+60242104[ label="{*OBJECT|}"]
+60242104 -> 60210008 [dir=back]
 
-2368612113400[ label="{NUMBER|}"]
-2368612113400 -> 2368612086968 [dir=back]
-2368612113400 -> 2368612110568 [dir=back]
+60216616[ label="{STRING|}"]
 
-2368612115288[ label="{BASETYPE|}"]
-2368612115288 -> 2368612113400 [dir=back]
-2368612115288 -> 2368612084136 [dir=back]
-2368612115288 -> 2368612103016 [dir=back]
-2368612115288 -> 2368612104904 [dir=back]
+60210008[ label="{BASETYPE|}"]
+60210008 -> 60240216 [dir=back]
+60210008 -> 60206232 [dir=back]
+60210008 -> 60211896 [dir=back]
+60210008 -> 60216616 [dir=back]
 
-2368612119064[ label="{*OBJECT|}"]
-2368612119064 -> 2368612115288 [dir=back]
+60233608[ label="{INT|}"]
+
+60239272[ label="{FLOAT|}"]
+
+60240216[ label="{NUMBER|}"]
+60240216 -> 60239272 [dir=back]
+60240216 -> 60233608 [dir=back]
+
+60206232[ label="{BOOL|}"]
+
+60211896[ label="{ID|}"]
 
 
 }

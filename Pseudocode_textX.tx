@@ -82,9 +82,9 @@ For_instruction_startline_1:
 For_instruction_startline_2:
     'for'
     variable_main = Variable_main
-    'in range('
+    'in range'
     variable_range = Variable_range
-    ') do'
+    'do'
 ;
 
 For_instruction_endline:
@@ -188,7 +188,7 @@ Variable_list:
     var_list = ID
 ;
 Variable_range:
-    var_range = ID
+    var_range = INT
 ; 
 Variable_value:
     var_value = ID
