@@ -21,6 +21,7 @@ a equal 1
 p equal li
 q equal 2
 
+
 print lizhaojia
 print a
 print 'today is a' 
@@ -77,5 +78,29 @@ for y in range 20 do
         print y
     end for
 end for
+
+
+function ADD_TWO_NUMBER with q,p is
+    print a
+    return p
+end function
+
+function ADD_TWO_NUM with a,c is
+    print p
+    return b
+end function
+
+function ADD_TWO is
+    print q
+end function
+
+function ADD_TWO is
+end function
+
+
+call ADD_TWO_NUM with a,p,c
+call ADD_TWO_NUM with a,p
+call ADD_TWO
+call ADD
 
 

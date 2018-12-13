@@ -1,0 +1,23 @@
+list forlist
+put in list forlist: test,test1
+
+print forlist
+
+for x in forlist do
+    print x
+end for
+
+for x in error do
+    print x
+end for
+
+for x in range 100 do
+    print x
+end for
+
+for y in range 20 do
+    for x in range 10 do
+        print x
+        print y
+    end for
+end for

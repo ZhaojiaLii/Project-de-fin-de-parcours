@@ -26,6 +26,7 @@ class Python(object):
         need_value_list = []
         have_value_list = []  
         list_already_have_value = []
+        function_list = [] # save the function name which has been defined
         for_list = [] # specialized in for instruction
         if_num_1 = 0    # let us know the number of the if instruction
         for_num_1 = 0   # let us know the number of the for instruction
@@ -84,7 +85,8 @@ class Python(object):
                 need_value_list.append(var_declare)
 
                 # here we can show the user which variable they have declared
-                print ("//you have declared variable " + var_declare)
+                #print ("//you have declared variable " + var_declare)
+                print (var_declare+'= None')
                 
             # we can declare list and print <variable = []>
             elif c.__class__.__name__ == 'Declare_list':
@@ -523,8 +525,104 @@ class Python(object):
                 #delete the temporary parameters in for instruction
                     for_list.pop()
             
-                
-                
+            
+            # Function instruction below:
+            elif c.__class__.__name__ == 'Function_instruction_startline_1':
+                error_function = 0
+                function_var_list = []
+                function_name = '{}'.format(c.function_name.fun_name)
+                #To check whether we have defined the function or not 
+                if function_name in function_list:
+                    print ('\n'+"//this function '"+function_name+"' has already been defined")
+                    error_function = 1
+                else:
+                    #if not, add its name to list
+                    function_list.append(function_name)
+
+                for function_variables in c.function_variables:
+                    final_function_variable = function_variables.fun_var
+                    #To check whether we have declare the variable or not
+                    if final_function_variable not in declare_list:
+                        print ('\n'+"//please declare the variable '"+final_function_variable+"' first")
+                        error_function = 1
+                    else:
+                        #if so, add it to list
+                        function_var_list.append(final_function_variable.encode('raw_unicode_escape'))
+                function_list.append(len(function_var_list))
+                if error_function == 0:
+                    print ('def '+function_name+'('),
+                    print (",".join(str(i) for i in function_var_list)),
+                    print ('):')
+                    
+
+
+            elif c.__class__.__name__ == 'Function_instruction_startline_2':
+                function_name = '{}'.format(c.function_name.fun_name)
+                #To check whether we have defined the function or not 
+                if function_name in function_list:
+                    print ('\n'+"//this function '"+function_name+"' has already been defined")
+                    error_function = 1
+                else:
+                    #if not, add its name to list
+                    function_list.append(function_name)
+                if error_function == 0:
+                    print ('def '+function_name+'():')
+
+            elif c.__class__.__name__ == 'Function_instruction_return':
+                return_variable = '{}'.format(c.return_variable.return_var)
+                #To check whether we have declare the variable or not
+                if return_variable not in declare_list:
+                    print ('\n'+"//please declare the variable '"+return_variable+"' first")
+                    error_function = 1
+                if error_function == 0:
+                    print ('return '+return_variable)
+
+
+            elif c == 'end function': 
+                print ("//function instruction finished"+'\n')
+                error_function = 0
+
+            elif c.__class__.__name__ == 'Function_instruction_call_1':
+                function_name = '{}'.format(c.function_name.fun_name)
+                function_var_list = []
+                #This is the position of function_name in function_list 
+                position = 0
+                #To check if we define the function when we call it
+                if function_name not in function_list:
+                    print ('\n'+"//please define the function '"+function_name+"' first")
+                    error_function = 1
+                else:
+                    position = function_list.index(function_name)+1
+                    for function_variables in c.function_variables:
+                        final_function_variable = function_variables.fun_var
+                        #To check whether we have declare the variable or not
+                        if final_function_variable not in declare_list:
+                            print ('\n'+"//please declare the variable '"+final_function_variable+"' first")
+                            error_function = 1
+                        else:
+                            #if so, add it to list
+                            function_var_list.append(final_function_variable.encode('raw_unicode_escape'))
+                    # The function cannot be called if we use more formal parameters than its definition
+                    if len(function_var_list) > function_list[position]:
+                        print ('//Formal parameter over limit')
+                        error_function = 1
+                if error_function == 0:
+                    print (function_name+'('),
+                    print (",".join(str(i) for i in function_var_list)),
+                    print (')')
+                error_function = 0
+
+            elif c.__class__.__name__ == 'Function_instruction_call_2':
+                function_name = '{}'.format(c.function_name.fun_name)
+                #To check if we define the function when we call it
+                if function_name not in function_list:
+                    print ('\n'+"//please define the function '"+function_name+"' first")
+                    error_function = 1
+                elif error_function == 0:
+                    print (function_name+'()')
+                error_function = 0
+
+
         # show the values we have not given values at the last of the python code
 
         if len(need_value_list)>0:

@@ -1,0 +1,20 @@
+declare var1
+declare var2
+list list1
+
+put in list list1: Lizhaojia,Xuwanxun,Xiaoyao,Chaiqing
+print list1
+input var1
+
+var2 equal 12
+print var2
+
+if var1 is more equal var2 then
+    if var1 is equal to var2 then
+        print var1
+    else 
+        print var2
+    end if
+else
+    print var1
+end if
