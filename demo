@@ -20,6 +20,7 @@ input l
 a equal 1
 p equal li
 q equal 2
+min equal a
 
 
 print lizhaojia
@@ -31,32 +32,34 @@ declare asdf
 if a is more equal p then
     if a is equal to p then
         if a is equal to p then
-            input asdf
+            if a is equal to p then
+                print a
+            if else
+                print a 
+            end if
         else if a and q then
             print qwerty
-        else
+        if else
             print oiuytt89
         end if
     else if a or q then
         print p
-    else
+    if else
         print q
     end if
 else if a is equal to p then
     print a
-else
+if else
     print a
 end if
 
 while a is lower than c do
     while a is equal to p do
         if a is equal to p then
-            min equal a
+            print min
+        if else 
             print min
         end if
-    else
-        max equal a
-        print max
     end while
 end while
 

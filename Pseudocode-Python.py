@@ -32,10 +32,11 @@ class Python(object):
         for_num_1 = 0   # let us know the number of the for instruction
         error_for = 0   # let us konw if there is an error in for condition
         while_num_1 = 0
-        indentation = "    "    # control the indentation of python code
-        indentation_for="   "
-        indentation_while="   "
-        indentation_final=''
+        indentation_if = ""   # control the indentation of python code
+        indentation_if_basic = ""    
+        indentation_for= ""
+        indentation_while= ""
+        indentation_final=""
         for_variable_main=""
 
         
@@ -47,16 +48,18 @@ class Python(object):
             # we have declare_variables, input_variables and print
 
             # for process the indentations:
-            if if_num_1 == 0:
-                indentation = ''
-            elif if_num_1 == 1:
-                indentation = "    "
-            elif if_num_1 == 2:
-                indentation = "        "
-            elif if_num_1 > 2:
-                # the "i" here is not used but necessary to run the loop
-                for i in range(if_num_1-2):
-                    indentation = indentation + "    "
+
+            # indentation for basic commands in if instruction:
+            indentation_if_basic = ""
+            indentation_number_if_basic = if_num_1 + 1
+            for i in range(indentation_number_if_basic+1):
+                indentation_if_basic = indentation_if_basic + "    "
+
+            # indentation for if,else,elif lines:
+            indentation_if = ""   
+            indentation_number_if = if_num_1
+            for i in range(indentation_number_if):
+                indentation_if = indentation_if + "    "
             
             if for_num_1 == 0:
                 indentation_for=""
@@ -78,6 +81,7 @@ class Python(object):
                 for i in range(while_num_1-2):
                     indentation_while = indentation_while + "    "
 
+            
             # we start to process the pseudocode from here:
             if c.__class__.__name__ == 'Declare_variable':                
                 var_declare = '{}'.format(c.variable.var)
@@ -100,6 +104,20 @@ class Python(object):
                 verify_name = '{}'.format(c.variable.var)
                 add_to_list = []
                 print_list = []
+
+                indentation_if_basic = ""
+                indentation_number_if_basic = if_num_1 + 1
+                for i in range(indentation_number_if_basic+1):
+                    indentation_if_basic = indentation_if_basic + "    "
+                if while_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_while
+                elif for_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_for
+                elif while_num_1!=0 and for_num_1!=0:
+                    indentation_if_basic = indentation_if_basic + indentation_for + indentation_while
+                else:
+                    indentation_if_basic = indentation_if_basic
+
                 for list_variables in c.list_variables:
                     final_list_variable = list_variables.list_var
                     add_to_list.append(final_list_variable.encode('raw_unicode_escape'))  
@@ -117,6 +135,20 @@ class Python(object):
 
             elif c.__class__.__name__ == 'Input_variable':
                 var_input = '{}'.format(c.variable.var)
+
+                indentation_if_basic = ""
+                indentation_number_if_basic = if_num_1 + 1
+                for i in range(indentation_number_if_basic+1):
+                    indentation_if_basic = indentation_if_basic + "    "
+                if while_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_while
+                elif for_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_for
+                elif while_num_1!=0 and for_num_1!=0:
+                    indentation_if_basic = indentation_if_basic + indentation_for + indentation_while
+                else:
+                    indentation_if_basic = indentation_if_basic
+
                 # detect the list include the variable we want to input or not
                 # if not we remind the user to declare the variable first
                 # if yes we give the python code of input variables
@@ -125,8 +157,9 @@ class Python(object):
                 else:
                     show_input = show_input + var_input
                     input_list.append(var_input)
+                    
                     if if_num_1 != 0:
-                        print (indentation + var_input + " = raw_input('input:"+var_input+"')" )
+                        print (indentation_if_basic + var_input + " = raw_input('input:"+var_input+"')" )
                     else: 
                         if while_num_1 != 0:
                             print (indentation_while + var_input + " = raw_input('input:"+var_input+"')" )
@@ -139,12 +172,24 @@ class Python(object):
             elif c.__class__.__name__ == 'Declare_value':
                 # here we can assign the value to the variables we have declared
                 var_value = '{}'.format(c.variable.var)
+                indentation_if_basic = ""
+                indentation_number_if_basic = if_num_1 + 1
+                for i in range(indentation_number_if_basic+1):
+                    indentation_if_basic = indentation_if_basic + "    "
+                if while_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_while
+                elif for_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_for
+                elif while_num_1!=0 and for_num_1!=0:
+                    indentation_if_basic = indentation_if_basic + indentation_for + indentation_while
+                else:
+                    indentation_if_basic = indentation_if_basic
                 # isinstance function let us know the value we have assigned to the variable
                 # is a String or a integer or a float
                 if isinstance(c.value.val,int):
                     value = str(c.value.val)
                     if if_num_1 != 0:
-                        print (indentation + var_value+' = '+value)
+                        print (indentation_if_basic + var_value+' = '+value)
                     elif for_num_1!=0:
                         print (indentation_for + var_value+' = '+value)
                     elif while_num_1 != 0:
@@ -157,7 +202,7 @@ class Python(object):
                 elif isinstance('{}'.format(c.value.val),str):
                     value = c.value.val
                     if if_num_1 != 0:
-                        print (indentation + var_value + " = '"+value+"'")
+                        print (indentation_if_basic + var_value + " = '"+value+"'")
                     elif for_num_1!= 0:
                         print (indentation_for + var_value + " = '"+value+"'")
                     elif while_num_1!= 0:
@@ -171,6 +216,20 @@ class Python(object):
 
             elif c.__class__.__name__ == 'Print_words':
                 content = '{}'.format(c.content.con)
+
+                indentation_if_basic = ""
+                indentation_number_if_basic = if_num_1
+                for i in range(indentation_number_if_basic):
+                    indentation_if_basic = indentation_if_basic + "    "
+                if while_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_while
+                elif for_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_for
+                elif while_num_1!=0 and for_num_1!=0:
+                    indentation_if_basic = indentation_if_basic + indentation_for + indentation_while
+                else:
+                    indentation_if_basic = indentation_if_basic
+
                 # we can use the list to help us know the variable we want to print is 
                 # a variable in our declare list or just a String
                 if error_for!=0:
@@ -179,17 +238,17 @@ class Python(object):
                     print(indentation_for + 'print '+content)
                 elif content in declare_list and input_list:
                     if if_num_1 != 0:
-                        print (indentation + 'print '+ content)
+                        print (indentation_if_basic + 'print '+ content)
                     elif for_num_1 != 0:
                         print (indentation_for + 'print '+ content)
                     elif while_num_1 != 0:
                         print (indentation_while + 'print '+ content)
                     else:
                         print ('print '+ content)
-                elif content in list_name:
+                elif content in list_name:   # print list
                     if content in list_already_have_value:
                         if if_num_1 != 0:
-                            print (indentation + 'print '+ content)
+                            print (indentation_if_basic + 'print '+ content)
                         elif for_num_1 != 0:
                             print (indentation_for + 'print '+ content)
                         elif while_num_1 != 0:
@@ -199,8 +258,8 @@ class Python(object):
                     else:
                         if if_num_1 != 0:
                             # remind the user if the list is empty or not existed
-                            print (indentation + 'print '+ content)
-                            print (indentation + '//can not print empty list, please assign values first')
+                            print (indentation_if_basic + 'print '+ content)
+                            print (indentation_if_basic + '//can not print empty list, please assign values first')
                         elif for_num_1 != 0:
                             print (indentation_for + 'print '+ content)
                             print (indentation_for + '//can not print empty list, please assign values first')
@@ -215,7 +274,7 @@ class Python(object):
                     print ('\n'+'//'+content+' is a variable, please give a value before print.')
                 else:
                     if if_num_1 != 0:
-                        print (indentation + 'print "'+ content +'"')
+                        print (indentation_if_basic + 'print "'+ content +'"')
                     elif for_num_1!= 0:
                         print (indentation_for + 'print "'+ content+'"')
                     elif while_num_1!= 0:
@@ -225,8 +284,21 @@ class Python(object):
 
             elif c.__class__.__name__ == 'Print_string':
                 content = '{}'.format(c.content_string.con)
+                indentation_if_basic = ""
+                indentation_number_if_basic = if_num_1 + 1
+                for i in range(indentation_number_if_basic+1):
+                    indentation_if_basic = indentation_if_basic + "    "
+                if while_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_while
+                elif for_num_1 != 0:
+                    indentation_if_basic = indentation_if_basic + indentation_for
+                elif while_num_1!=0 and for_num_1!=0:
+                    indentation_if_basic = indentation_if_basic + indentation_for + indentation_while
+                else:
+                    indentation_if_basic = indentation_if_basic
+                
                 if if_num_1 != 0:
-                    print (indentation + 'print '+'"'+content+'"')
+                    print (indentation_if_basic + 'print '+'"'+content+'"')
                 elif for_num_1 != 0:
                     print (indentation_for + 'print '+'"'+content+'"')
                 elif while_num_1 != 0:
@@ -252,7 +324,7 @@ class Python(object):
             # While instruction:
 
             elif c.__class__.__name__ == 'While_instruction_startline':
-                indentation_while = "    "
+                
 
                 if while_num_1 == 0:
                     print ('\n' + "//while instruction as below:") 
@@ -304,12 +376,25 @@ class Python(object):
             # If instruction is as below:
             
             elif c.__class__.__name__ == 'If_instruction_startline':
-                indentation = "    "
-
+                
                 if if_num_1 == 0:
                     print ('\n' + "//If instruction as below:") 
                 else:
                     if_num_1 = if_num_1
+                
+                indentation_if = ""   
+                indentation_number_if = if_num_1
+                for i in range(indentation_number_if):
+                    indentation_if = indentation_if + "    "
+                # if inside the while we have an if instruction
+                if while_num_1 != 0:
+                    indentation_if = indentation_if + indentation_while
+                elif for_num_1 != 0:
+                    indentation_if = indentation_if + indentation_for
+                elif while_num_1!=0 and for_num_1!=0:
+                    indentation_if = indentation_if + indentation_for + indentation_while
+                else:
+                    indentation_if = indentation_if
 
                 a = 0   # use a variable to know the two variables in IF are all declared
                 if_num_1 = if_num_1 + 1  # let us know this is which if instruction
@@ -317,17 +402,6 @@ class Python(object):
                 variable_af = '{}'.format(c.variable_af.var_af)
                 comparasion_symbol = '{}'.format(c.comparasion)
                 logic_operator = '{}'.format(c.logic_operator)
-
-                if if_num_1 > 1:
-                    if if_num_1 == 2:
-                        indentation = indentation
-                    elif if_num_1 > 2:
-                        for i in range(if_num_1-2):
-                            indentation = indentation + "    "
-                else:
-                    if_num_1 = if_num_1
-                    indentation = ''
-                        
 
                 if variable_be in have_value_list:
                     a = a + 1                
@@ -347,23 +421,23 @@ class Python(object):
 
                     # comparasion in if instruction
                     if comparasion_symbol == 'is greater than':
-                        print (indentation + "if " + variable_be + " > " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                 
+                        print (indentation_if + "if " + variable_be + " > " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                 
                     elif comparasion_symbol == 'is lower than':
-                        print (indentation + "if " + variable_be + " < " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                      
+                        print (indentation_if + "if " + variable_be + " < " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                      
                     elif comparasion_symbol == 'is more equal':
-                        print (indentation + "if " + variable_be + " >= " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                     
+                        print (indentation_if + "if " + variable_be + " >= " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                     
                     elif comparasion_symbol == 'is equal to':
-                        print (indentation + "if " + variable_be + " == " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                
+                        print (indentation_if + "if " + variable_be + " == " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                
                     elif comparasion_symbol == 'is different from':
-                        print (indentation + "if " + variable_be + " != " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " != " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
 
                     # logic operator in if instruction
                     elif logic_operator == 'and':
-                        print (indentation + "if " + variable_be + " and " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " and " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
                     elif logic_operator == 'or':
-                        print (indentation + "if " + variable_be + " or " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " or " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
                     elif logic_operator == 'not':
-                        print (indentation + "if " + variable_be + " not " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " not " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
             
             elif c.__class__.__name__ == 'If_instruction_elifline':
 
@@ -377,16 +451,20 @@ class Python(object):
                 # if we just have 1 if instruction, we don't need indentation for "if" but one "Tab" for other basic instructions
                 # if we have 2 if instructions, we need one "Tab" for "if" and two "Tabs" for basic instructions
                 # if we have more than 3 instructions, we use for loop to control the indentation
-                indentation = "    "
-                if if_num_1 > 1:
-                    if if_num_1 == 2:
-                        indentation = indentation
-                    elif if_num_1 > 2:
-                        for i in range(if_num_1-2):
-                            indentation = indentation + "    "
+    
+                indentation_if = ""   
+                indentation_number_if = if_num_1-1
+                for i in range(indentation_number_if):
+                    indentation_if = indentation_if + "    "
+                if while_num_1 != 0:
+                    indentation_if = indentation_if + indentation_while
+                elif for_num_1 != 0:
+                    indentation_if = indentation_if + indentation_for
+                elif while_num_1!=0 and for_num_1!=0:
+                    indentation_if = indentation_if + indentation_for + indentation_while
                 else:
-                    if_num_1 = if_num_1
-                    indentation = ''
+                    indentation_if = indentation_if
+
                 
                 # we need to know the variables in the if instruction have been declared or not
                 # if not we remind the user to declare, if yes we go into the next step
@@ -409,38 +487,34 @@ class Python(object):
                 if a == 2:
                     # comparasion in if instruction
                     if comparasion_symbol == 'is greater than':
-                        print (indentation + "elif " + variable_be + " > " + variable_af + ":")                      
+                        print (indentation_if + "elif " + variable_be + " > " + variable_af + ":")                      
                     elif comparasion_symbol == 'is lower than':
-                        print (indentation + "elif " + variable_be + " < " + variable_af + ":")                    
+                        print (indentation_if + "elif " + variable_be + " < " + variable_af + ":")                    
                     elif comparasion_symbol == 'is more equal':
-                        print (indentation + "elif " + variable_be + " >= " + variable_af + ":")                      
+                        print (indentation_if + "elif " + variable_be + " >= " + variable_af + ":")                      
                     elif comparasion_symbol == 'is equal to':
-                        print (indentation + "elif " + variable_be + " == " + variable_af + ":")                       
+                        print (indentation_if + "elif " + variable_be + " == " + variable_af + ":")                       
                     elif comparasion_symbol == 'is different from':
-                        print (indentation + "elif " + variable_be + " != " + variable_af + ":")
+                        print (indentation_if + "elif " + variable_be + " != " + variable_af + ":")
                     
                     # logic operators in if instruction
                     elif logic_operator == 'and':
-                        print (indentation + "elif " + variable_be + " and " + variable_af + ":")
+                        print (indentation_if + "elif " + variable_be + " and " + variable_af + ":")
                     elif logic_operator == 'or':
-                        print (indentation + "elif " + variable_be + " or " + variable_af + ":")
+                        print (indentation_if + "elif " + variable_be + " or " + variable_af + ":")
                     elif logic_operator == 'not':
-                        print (indentation + "elif " + variable_be + " not " + variable_af + ":")
+                        print (indentation_if + "elif " + variable_be + " not " + variable_af + ":")
 
             # if we detect the "else" we can jump directly into the basic instructions
             # but we still have to control the indentations
-            elif c == 'else':
-                indentation = "    "
-                if if_num_1 > 1:
-                    if if_num_1 == 2:
-                        indentation = indentation
-                    elif if_num_1 > 2:
-                        for i in range(if_num_1-2):
-                            indentation = indentation + indentation
-                else:
-                    if_num_1 = if_num_1
-                    indentation = ''
-                print (indentation + "else:")
+            elif c == 'if else':
+                indentation_if = ""   
+                indentation_number_if = if_num_1-1
+                for i in range(indentation_number_if):
+                    indentation_if = indentation_if + "    "
+                if while_num_1 != 0:
+                    indentation_if = indentation_if + indentation_while
+                print (indentation_if + "else:")
 
             # detected end if, we will finish the corresponding if instruction
             # and remind us which if instructgion has been ended

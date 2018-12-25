@@ -61,7 +61,7 @@ If_instruction_elifline:
 ; 
 
 If_instruction_elseline:
-    'else' /\s*/ 
+    'if else' /\s*/ 
 ;
 
 If_instruction_endline:
