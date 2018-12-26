@@ -257,7 +257,7 @@ class Python(object):
             elif c.__class__.__name__ == 'If_instruction_startline':
                 
                 if if_num_1 == 0:
-                    print ('\n' + "#If instruction as below:") 
+                    print ("#If instruction as below:") 
                 else:
                     if_num_1 = if_num_1
                 
