@@ -34,22 +34,22 @@ if a is more equal p then
         if a is equal to p then
             if a is equal to p then
                 print a
-            if else
+            else
                 print a 
             end if
         else if a and q then
             print qwerty
-        if else
+        else
             print oiuytt89
         end if
     else if a or q then
         print p
-    if else
+    else
         print q
     end if
 else if a is equal to p then
     print a
-if else
+else
     print a
 end if
 
@@ -57,7 +57,7 @@ while a is lower than c do
     while a is equal to p do
         if a is equal to p then
             print min
-        if else 
+        else 
             print min
         end if
     end while

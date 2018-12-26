@@ -15,7 +15,7 @@ Calculation:
 ;
 
 While_instruction:
-    While_instruction_startline | While_instruction_else | While_instruction_endline
+    While_instruction_startline | instruction_else | While_instruction_endline
 ;
 
 While_instruction_startline:
@@ -26,9 +26,6 @@ While_instruction_startline:
     'do'
 ;
 
-While_instruction_else:
-    'else' /\s*/
-;
 
 While_instruction_endline:
     'end while'
@@ -37,7 +34,7 @@ While_instruction_endline:
 
 
 If_instruction:
-    If_instruction_startline | If_instruction_elifline | If_instruction_elseline | If_instruction_endline
+    If_instruction_startline | If_instruction_elifline | instruction_else | If_instruction_endline
 ;
 
 If_instruction_startline:
@@ -60,8 +57,8 @@ If_instruction_elifline:
     'then'
 ; 
 
-If_instruction_elseline:
-    'if else' /\s*/ 
+instruction_else:
+    'else' /\s*/ 
 ;
 
 If_instruction_endline:
