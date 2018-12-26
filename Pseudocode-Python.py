@@ -17,8 +17,8 @@ class Python(object):
     # we parse our code in this function
     def Instructions(self, model):
 
-        show_declare = '\n'+'//you have not give values to these variables: '
-        show_input = '\n'+'//you need to type in variable: '
+        show_declare = '\n'+'#you have not give values to these variables: '
+        show_input = '\n'+'#you need to type in variable: '
         # we put the variables we have declared in the list, is easier to use and process
         declare_list = []
         input_list = []
@@ -131,7 +131,7 @@ class Python(object):
                         print_list.append(list_elements)
                     print (right_name + ' = %s' %print_list)
                 else:
-                    print ('// can not find the list name:"' + verify_name + '", please declare first')
+                    print ('# can not find the list name:"' + verify_name + '", please declare first')
 
             elif c.__class__.__name__ == 'Input_variable':
                 var_input = '{}'.format(c.variable.var)
@@ -153,7 +153,7 @@ class Python(object):
                 # if not we remind the user to declare the variable first
                 # if yes we give the python code of input variables
                 if var_input not in declare_list:
-                    print ('\n'+"//please declare the variable '"+var_input+"' first")
+                    print ('\n'+"#please declare the variable '"+var_input+"' first")
                 else:
                     show_input = show_input + var_input
                     input_list.append(var_input)
@@ -233,7 +233,7 @@ class Python(object):
                 # we can use the list to help us know the variable we want to print is 
                 # a variable in our declare list or just a String
                 if error_for!=0:
-                    print("//please check the pseudocode of <for condition>")
+                    print("#please check the pseudocode of <for condition>")
                 elif content in for_list:
                     print(indentation_for + 'print '+content)
                 elif content in declare_list and input_list:
@@ -259,19 +259,19 @@ class Python(object):
                         if if_num_1 != 0:
                             # remind the user if the list is empty or not existed
                             print (indentation_if_basic + 'print '+ content)
-                            print (indentation_if_basic + '//can not print empty list, please assign values first')
+                            print (indentation_if_basic + '# can not print empty list, please assign values first')
                         elif for_num_1 != 0:
                             print (indentation_for + 'print '+ content)
-                            print (indentation_for + '//can not print empty list, please assign values first')
+                            print (indentation_for + '# can not print empty list, please assign values first')
                         elif while_num_1 != 0:
                             print (indentation_while + 'print '+ content)
-                            print (indentation_while + '//can not print empty list, please assign values first')
+                            print (indentation_while + '# can not print empty list, please assign values first')
                         else:
                             print ('print '+ content)
-                            print ('//can not print empty list, please assign values first') 
+                            print ('# can not print empty list, please assign values first') 
 
                 elif content in declare_list not in input_list:
-                    print ('\n'+'//'+content+' is a variable, please give a value before print.')
+                    print ('\n'+'#'+content+' is a variable, please give a value before print.')
                 else:
                     if if_num_1 != 0:
                         print (indentation_if_basic + 'print "'+ content +'"')
@@ -327,7 +327,7 @@ class Python(object):
                 
 
                 if while_num_1 == 0:
-                    print ('\n' + "//while instruction as below:") 
+                    print ('\n' + "# while instruction as below:") 
                 else:
                     while_num_1 = while_num_1
 
@@ -371,14 +371,14 @@ class Python(object):
                     indentation_while = ''
 
             elif c == 'end while':
-                print("// The end of while")
+                print("# The end of while")
 
             # If instruction is as below:
             
             elif c.__class__.__name__ == 'If_instruction_startline':
                 
                 if if_num_1 == 0:
-                    print ('\n' + "//If instruction as below:") 
+                    print ('\n' + "#If instruction as below:") 
                 else:
                     if_num_1 = if_num_1
                 
@@ -406,38 +406,38 @@ class Python(object):
                 if variable_be in have_value_list:
                     a = a + 1                
                 elif variable_be in declare_list:
-                    print ("//" + variable_be + " is not a valued variable, please give a value first.")  
+                    print ("#" + variable_be + " is not a valued variable, please give a value first.")  
                 else:
-                    print ("//" + variable_be + " is not a declared variable, please declare first.")
+                    print ("#" + variable_be + " is not a declared variable, please declare first.")
                 
                 if variable_af in have_value_list:
                     a = a + 1
                 elif variable_af in declare_list:
-                    print ("//" + variable_af + " is not a valued variable, please give a value first.")  
+                    print ("#" + variable_af + " is not a valued variable, please give a value first.")  
                 else:
-                    print ("//" + variable_af + " is not a declared variable, please declare first.")
+                    print ("#" + variable_af + " is not a declared variable, please declare first.")
                 
                 if a == 2:
 
                     # comparasion in if instruction
                     if comparasion_symbol == 'is greater than':
-                        print (indentation_if + "if " + variable_be + " > " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                 
+                        print (indentation_if + "if " + variable_be + " > " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")                 
                     elif comparasion_symbol == 'is lower than':
-                        print (indentation_if + "if " + variable_be + " < " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                      
+                        print (indentation_if + "if " + variable_be + " < " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")                      
                     elif comparasion_symbol == 'is more equal':
-                        print (indentation_if + "if " + variable_be + " >= " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                     
+                        print (indentation_if + "if " + variable_be + " >= " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")                     
                     elif comparasion_symbol == 'is equal to':
-                        print (indentation_if + "if " + variable_be + " == " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")                
+                        print (indentation_if + "if " + variable_be + " == " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")                
                     elif comparasion_symbol == 'is different from':
-                        print (indentation_if + "if " + variable_be + " != " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " != " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")
 
                     # logic operator in if instruction
                     elif logic_operator == 'and':
-                        print (indentation_if + "if " + variable_be + " and " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " and " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")
                     elif logic_operator == 'or':
-                        print (indentation_if + "if " + variable_be + " or " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " or " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")
                     elif logic_operator == 'not':
-                        print (indentation_if + "if " + variable_be + " not " + variable_af + ":" + "    //number " + str(if_num_1) + " if instruction start")
+                        print (indentation_if + "if " + variable_be + " not " + variable_af + ":" + "    #number " + str(if_num_1) + " if instruction start")
             
             elif c.__class__.__name__ == 'If_instruction_elifline':
 
@@ -471,16 +471,16 @@ class Python(object):
                 if variable_be in have_value_list:
                     a = a + 1                
                 elif variable_be in declare_list:
-                    print ("//" + variable_be + " is not a valued variable, please give a value first.")  
+                    print ("#" + variable_be + " is not a valued variable, please give a value first.")  
                 else:
-                    print ("//" + variable_be + " is not a declared variable, please declare first.")
+                    print ("#" + variable_be + " is not a declared variable, please declare first.")
                 
                 if variable_af in have_value_list:
                     a = a + 1
                 elif variable_af in declare_list:
-                    print ("//" + variable_af + " is not a valued variable, please give a value first.")  
+                    print ("#" + variable_af + " is not a valued variable, please give a value first.")  
                 else:
-                    print ("//" + variable_af + " is not a declared variable, please declare first.")
+                    print ("#" + variable_af + " is not a declared variable, please declare first.")
                 
                 # we use the symbol "a" to know if the two variables are both declared
                 # if a=2, we go into the if instruction and print the python code
@@ -519,7 +519,7 @@ class Python(object):
             # detected end if, we will finish the corresponding if instruction
             # and remind us which if instructgion has been ended
             elif c == 'end if':
-                print ("//number " + str(if_num_1) + " if instruction finished")
+                print ("#number " + str(if_num_1) + " if instruction finished")
                 if_num_1 = if_num_1 - 1
 
             # for conditions is below:
@@ -544,15 +544,15 @@ class Python(object):
                     a = a + 1   
                              
                 else:
-                    print ("//" + variable_main + " is not a string, please use string")
+                    print ("#" + variable_main + " is not a string, please use string")
                 
                 if variable_list in list_already_have_value:
                     a = a + 1                
                 elif variable_list in list_name:
-                    print ("//"+ variable_list + " is not a declared variable, please give a value first.")  
+                    print ("#"+ variable_list + " is not a declared variable, please give a value first.")  
                     error_for=1
                 else:
-                    print ("//" + variable_list + " is not a valued variable, please declare first.")
+                    print ("#" + variable_list + " is not a valued variable, please declare first.")
                     error_for=1
                 if a ==2:
                     print (indentation_for+"for "+variable_main+" in "+variable_list+":")
@@ -576,12 +576,12 @@ class Python(object):
                     for_list.append(variable_main)
                     
                 else:
-                    print ("//" + variable_main + " is not a string, please use string")
+                    print ("#" + variable_main + " is not a string, please use string")
                 
                 if isinstance(variable_range,str):
                     a = a + 1                
                 else:
-                    print ("//" + variable_range + " is not a number, please give a number firstly")  
+                    print ("#" + variable_range + " is not a number, please give a number firstly")  
                 
                 if a ==2:
                     print (indentation_for+"for "+variable_main+" in range("+variable_range+"):")
@@ -590,11 +590,11 @@ class Python(object):
             elif c == 'end for':
                 #if it is not a correct for instruction:
                 if error_for!=0:
-                    print("//wrong for instriuction finished")
+                    print("#wrong for instriuction finished")
                     for_num_1 = for_num_1 -1
                 #if it is a correct for instruction:
                 else:
-                    print ("//for instruction finished")
+                    print ("#for instruction finished")
                     for_num_1 = for_num_1 - 1
                 #delete the temporary parameters in for instruction
                     for_list.pop()
@@ -607,7 +607,7 @@ class Python(object):
                 function_name = '{}'.format(c.function_name.fun_name)
                 #To check whether we have defined the function or not 
                 if function_name in function_list:
-                    print ('\n'+"//this function '"+function_name+"' has already been defined")
+                    print ('\n'+"#this function '"+function_name+"' has already been defined")
                     error_function = 1
                 else:
                     #if not, add its name to list
@@ -617,7 +617,7 @@ class Python(object):
                     final_function_variable = function_variables.fun_var
                     #To check whether we have declare the variable or not
                     if final_function_variable not in declare_list:
-                        print ('\n'+"//please declare the variable '"+final_function_variable+"' first")
+                        print ('\n'+"#please declare the variable '"+final_function_variable+"' first")
                         error_function = 1
                     else:
                         #if so, add it to list
@@ -634,7 +634,7 @@ class Python(object):
                 function_name = '{}'.format(c.function_name.fun_name)
                 #To check whether we have defined the function or not 
                 if function_name in function_list:
-                    print ('\n'+"//this function '"+function_name+"' has already been defined")
+                    print ('\n'+"#this function '"+function_name+"' has already been defined")
                     error_function = 1
                 else:
                     #if not, add its name to list
@@ -646,14 +646,14 @@ class Python(object):
                 return_variable = '{}'.format(c.return_variable.return_var)
                 #To check whether we have declare the variable or not
                 if return_variable not in declare_list:
-                    print ('\n'+"//please declare the variable '"+return_variable+"' first")
+                    print ('\n'+"#please declare the variable '"+return_variable+"' first")
                     error_function = 1
                 if error_function == 0:
                     print ('return '+return_variable)
 
 
             elif c == 'end function': 
-                print ("//function instruction finished"+'\n')
+                print ("#function instruction finished"+'\n')
                 error_function = 0
 
             elif c.__class__.__name__ == 'Function_instruction_call_1':
@@ -663,7 +663,7 @@ class Python(object):
                 position = 0
                 #To check if we define the function when we call it
                 if function_name not in function_list:
-                    print ('\n'+"//please define the function '"+function_name+"' first")
+                    print ('\n'+"#please define the function '"+function_name+"' first")
                     error_function = 1
                 else:
                     position = function_list.index(function_name)+1
@@ -671,14 +671,14 @@ class Python(object):
                         final_function_variable = function_variables.fun_var
                         #To check whether we have declare the variable or not
                         if final_function_variable not in declare_list:
-                            print ('\n'+"//please declare the variable '"+final_function_variable+"' first")
+                            print ('\n'+"#please declare the variable '"+final_function_variable+"' first")
                             error_function = 1
                         else:
                             #if so, add it to list
                             function_var_list.append(final_function_variable.encode('raw_unicode_escape'))
                     # The function cannot be called if we use more formal parameters than its definition
                     if len(function_var_list) > function_list[position]:
-                        print ('//Formal parameter over limit')
+                        print ('#Formal parameter over limit')
                         error_function = 1
                 if error_function == 0:
                     print (function_name+'('),
@@ -690,7 +690,7 @@ class Python(object):
                 function_name = '{}'.format(c.function_name.fun_name)
                 #To check if we define the function when we call it
                 if function_name not in function_list:
-                    print ('\n'+"//please define the function '"+function_name+"' first")
+                    print ('\n'+"#please define the function '"+function_name+"' first")
                     error_function = 1
                 elif error_function == 0:
                     print (function_name+'()')
