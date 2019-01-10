@@ -91,6 +91,7 @@ For_instruction_endline:
 Function_instruction:
     Function_instruction_startline_1 | Function_instruction_startline_2 | Function_instruction_return
     | Function_instruction_endline | Function_instruction_call_1 | Function_instruction_call_2
+    | Function_instruction_declare_1 | Function_instruction_declare_2
 ;
 
 Function_instruction_startline_1:
@@ -124,6 +125,18 @@ Function_instruction_call_1:
 
 Function_instruction_call_2:
     'call'
+    function_name = Function_name
+;
+
+Function_instruction_declare_1:
+    variable = Variable /\s*/ 'result' /\s*/
+    function_name = Function_name
+    'with'
+    function_variables += Function_variables[',']
+;
+
+Function_instruction_declare_2:
+    variable = Variable /\s*/ 'result' /\s*/
     function_name = Function_name
 ;
 

@@ -3,6 +3,7 @@ declare p
 declare c
 declare ddd
 declare q
+declare x
 declare min
 declare max
 list qwerty
@@ -20,6 +21,8 @@ input l
 a equal 1
 p equal li
 q equal 2
+q equal 3
+q equal a
 min equal a
 
 
@@ -95,6 +98,13 @@ end function
 
 function ADD_TWO is
     print q
+    while a is equal to p do
+        if a is equal to p then
+            print min
+        else 
+            print min
+        end if
+    end while
 end function
 
 function ADD_TWO is
@@ -107,3 +117,5 @@ call ADD_TWO
 call ADD
 
 
+a result ADD_TWO_NUM with a,p
+q result ADD_TWO

@@ -92,6 +92,9 @@ class Python(object):
                 else:
                     show_input = show_input + var_input
                     input_list.append(var_input)
+                    if var_input not in have_value_list:
+                        need_value_list.remove(var_input)   
+                        have_value_list.append(var_input)
                     
                     if if_num_1 != 0:
                         print (indentation + var_input + " = raw_input('input:"+var_input+"')" )
@@ -107,36 +110,43 @@ class Python(object):
             elif c.__class__.__name__ == 'Declare_value':
                 # here we can assign the value to the variables we have declared
                 var_value = '{}'.format(c.variable.var)
-
-                # isinstance function let us know the value we have assigned to the variable
-                # is a String or a integer or a float
-                if isinstance(c.value.val,int):
-                    value = str(c.value.val)
-                    if if_num_1 != 0:
-                        print (indentation + var_value+' = '+value)
-                    elif for_num_1!=0:
-                        print (indentation + var_value+' = '+value)
-                    elif while_num_1 != 0:
-                        print (indentation + var_value+' = '+value)
-                    else:
-                        print (indentation + var_value+' = '+value)
-                    # we use the list to know which variable we have declared but not assigned value
-                    need_value_list.remove(var_value)
-                    have_value_list.append(var_value)
-                elif isinstance('{}'.format(c.value.val),str):
-                    value = c.value.val
-                    if if_num_1 != 0:
-                        print (indentation + var_value + " = '"+value+"'")
-                    elif for_num_1!= 0:
-                        print (indentation + var_value + " = '"+value+"'")
-                    elif while_num_1!= 0:
-                        print (indentation + var_value + " = '"+value+"'")
-                    else:
-                        print (indentation + var_value+" = '"+value+"'")
-                    need_value_list.remove(var_value)   
-                    have_value_list.append(var_value)
+                if var_value not in declare_list:
+                    print ('\n'+"#please declare the variable '"+var_value+"' first")
                 else:
-                    return
+                    # isinstance function let us know the value we have assigned to the variable
+                    # is a String or a integer or a float
+                    if isinstance(c.value.val,int):
+                        value = str(c.value.val)
+                        if if_num_1 != 0:
+                            print (indentation + var_value+' = '+value)
+                        elif for_num_1!=0:
+                            print (indentation + var_value+' = '+value)
+                        elif while_num_1 != 0:
+                            print (indentation + var_value+' = '+value)
+                        else:
+                            print (indentation + var_value+' = '+value)
+                        # we use the list to know which variable we have declared but not assigned value
+                        if var_value not in have_value_list:
+                            need_value_list.remove(var_value)
+                            have_value_list.append(var_value)
+                    elif isinstance('{}'.format(c.value.val),str):
+                        value = c.value.val
+                        if value in declare_list:
+                            print (indentation + var_value+' = '+value)
+                        elif if_num_1 != 0:
+                            print (indentation + var_value + " = '"+value+"'")
+                        elif for_num_1!= 0:
+                            print (indentation + var_value + " = '"+value+"'")
+                        elif while_num_1!= 0:
+                            print (indentation + var_value + " = '"+value+"'")
+                        else:
+                            print (indentation + var_value+" = '"+value+"'")
+                        if var_value not in have_value_list:
+                            need_value_list.remove(var_value)   
+                            have_value_list.append(var_value)
+                        
+                    else:
+                        return
 
             elif c.__class__.__name__ == 'Print_words':
                 content = '{}'.format(c.content.con)
@@ -473,12 +483,13 @@ class Python(object):
                     else:
                         #if so, add it to list
                         function_var_list.append(final_function_variable.encode('raw_unicode_escape'))
+                # we add the lenth of function_var_list of this function after its name, so we can find it easily when we need to know
                 function_list.append(len(function_var_list))
                 if error_function == 0:
                     print ('def '+function_name+'('),
                     print (",".join(str(i) for i in function_var_list)),
                     print ('):')
-                    
+                    indentation += '    '
 
 
             elif c.__class__.__name__ == 'Function_instruction_startline_2':
@@ -492,6 +503,7 @@ class Python(object):
                     function_list.append(function_name)
                 if error_function == 0:
                     print ('def '+function_name+'():')
+                    indentation += '    '
 
             elif c.__class__.__name__ == 'Function_instruction_return':
                 return_variable = '{}'.format(c.return_variable.return_var)
@@ -500,12 +512,13 @@ class Python(object):
                     print ('\n'+"#please declare the variable '"+return_variable+"' first")
                     error_function = 1
                 if error_function == 0:
-                    print ('return '+return_variable)
+                    print (indentation + 'return '+return_variable)
 
 
             elif c == 'end function': 
                 print ("#function instruction finished"+'\n')
                 error_function = 0
+                indentation = indentation[:-4]
 
             elif c.__class__.__name__ == 'Function_instruction_call_1':
                 function_name = '{}'.format(c.function_name.fun_name)
@@ -517,6 +530,7 @@ class Python(object):
                     print ('\n'+"#please define the function '"+function_name+"' first")
                     error_function = 1
                 else:
+                    #position +1 represent the lenth of function_var_list
                     position = function_list.index(function_name)+1
                     for function_variables in c.function_variables:
                         final_function_variable = function_variables.fun_var
@@ -532,7 +546,7 @@ class Python(object):
                         print ('#Formal parameter over limit')
                         error_function = 1
                 if error_function == 0:
-                    print (function_name+'('),
+                    print (indentation + function_name+'('),
                     print (",".join(str(i) for i in function_var_list)),
                     print (')')
                 error_function = 0
@@ -544,8 +558,69 @@ class Python(object):
                     print ('\n'+"#please define the function '"+function_name+"' first")
                     error_function = 1
                 elif error_function == 0:
-                    print (function_name+'()')
+                    print (indentation + function_name+'()')
                 error_function = 0
+
+
+            elif c.__class__.__name__ == 'Function_instruction_declare_1':
+                var_value = '{}'.format(c.variable.var)
+
+                function_name = '{}'.format(c.function_name.fun_name)
+                function_var_list = []
+                #This is the position of function_name in function_list 
+                position = 0
+                #To check if we define the variable when we call it
+                if var_value not in declare_list:
+                    print ('\n'+"#please declare the variable '"+var_value+"' first")
+                    error_function = 1
+                #To check if we define the function when we call it
+                elif function_name not in function_list:
+                    print ('\n'+"#please define the function '"+function_name+"' first")
+                    error_function = 1
+                else:
+                    #position +1 represent the lenth of function_var_list
+                    position = function_list.index(function_name)+1
+                    for function_variables in c.function_variables:
+                        final_function_variable = function_variables.fun_var
+                        #To check whether we have declare the variable or not
+                        if final_function_variable not in declare_list:
+                            print ('\n'+"#please declare the variable '"+final_function_variable+"' first")
+                            error_function = 1
+                        else:
+                            #if so, add it to list
+                            function_var_list.append(final_function_variable.encode('raw_unicode_escape'))
+                    # The function cannot be called if we use more formal parameters than its definition
+                    if len(function_var_list) > function_list[position]:
+                        print ('#Formal parameter over limit')
+                        error_function = 1
+                
+                if error_function == 0:
+                    print (indentation + var_value + ' = ' + function_name + '('),
+                    print (",".join(str(i) for i in function_var_list)),
+                    print (')')
+                error_function = 0
+                if var_value not in have_value_list:
+                    need_value_list.remove(var_value)   
+                    have_value_list.append(var_value)
+
+
+            elif c.__class__.__name__ == 'Function_instruction_declare_2':
+                var_value = '{}'.format(c.variable.var)
+                function_name = '{}'.format(c.function_name.fun_name)
+                #To check if we define the function when we call it
+                if var_value not in declare_list:
+                    print ('\n'+"#please declare the variable '"+var_value+"' first")
+                    error_function = 1
+                #To check if we define the function when we call it
+                elif function_name not in function_list:
+                    print ('\n'+"#please define the function '"+function_name+"' first")
+                    error_function = 1
+                elif error_function == 0:
+                    print (indentation + var_value + ' = ' + function_name + '()')
+                error_function = 0
+                if var_value not in have_value_list:
+                    need_value_list.remove(var_value)   
+                    have_value_list.append(var_value)
 
 
         # show the values we have not given values at the last of the python code
