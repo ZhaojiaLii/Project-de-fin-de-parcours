@@ -1,5 +1,6 @@
 # Project-de-fin-de-parcours
 Project de fin de parcours:  "From Pseudocode to Code".
+https://deepwiki.com/ZhaojiaLii/Project-de-fin-de-parcours
 This project originates from a research article by Portnoff [1] which showed that the area in the brain that is activated when novice programmers need to understand code is the language area (and not the logic or formal area). Based on this fact, Portnoff claims that the introductory programming course must be taught as a language course, with techniques that were shown to be successful when learning a second language. In particular, two of these techniques are to speak and hear the language as much as possible.
 
 In the context of programming languages, it is difficult to apply these techniques. One can hardly imagine two people chitchatting in Python or Java. This issue comes from the fact that programming languages are not really similar to natural languages (like English) and were mostly created to be written and not spoken.
